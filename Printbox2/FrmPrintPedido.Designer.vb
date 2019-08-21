@@ -28,6 +28,7 @@ Partial Class FrmPrintPedido
         Me.Button1 = New System.Windows.Forms.Button()
         Me.dg = New System.Windows.Forms.DataGridView()
         Me.lblTotalReg = New System.Windows.Forms.Label()
+        Me.Button2 = New System.Windows.Forms.Button()
         CType(Me.dg, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -78,11 +79,21 @@ Partial Class FrmPrintPedido
         Me.lblTotalReg.TabIndex = 4
         Me.lblTotalReg.Text = " 0 Linhas"
         '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(290, 417)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 5
+        Me.Button2.Text = "Button2"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'FrmPrintPedido
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1120, 450)
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.lblTotalReg)
         Me.Controls.Add(Me.dg)
         Me.Controls.Add(Me.Button1)
@@ -101,4 +112,5 @@ Partial Class FrmPrintPedido
     Friend WithEvents Button1 As Button
     Friend WithEvents dg As DataGridView
     Friend WithEvents lblTotalReg As Label
+    Friend WithEvents Button2 As Button
 End Class
