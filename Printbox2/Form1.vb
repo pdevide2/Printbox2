@@ -1,5 +1,5 @@
-﻿Public Class Form1
-    Private Sub DemoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DemoToolStripMenuItem.Click
+﻿Public Class FrmPrincipal
+    Private Sub DemoToolStripMenuItem_Click(sender As Object, e As EventArgs)
         Dim form = New DemoPrint
         form.MdiParent = Me
         form.Show()
@@ -10,5 +10,15 @@
         form.MdiParent = Me
         form.Show()
 
+    End Sub
+
+    Private Sub SairToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles SairToolStripMenuItem1.Click
+        Application.Exit()
+    End Sub
+
+    Private Sub TesteClasseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TesteClasseToolStripMenuItem.Click
+        Dim form = New TestClass
+        form.MdiParent = Me
+        form.Show()
     End Sub
 End Class

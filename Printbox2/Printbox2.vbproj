@@ -76,6 +76,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CaixaInfo.vb" />
     <Compile Include="Conexao.vb" />
     <Compile Include="DadosConexao.vb" />
     <Compile Include="DemoPrint.Designer.vb">
@@ -84,6 +85,7 @@
     <Compile Include="DemoPrint.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FilialInfo.vb" />
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -113,7 +115,14 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ProdutoInfo.vb" />
     <Compile Include="RawPrinterHelper.vb" />
+    <Compile Include="Testes\TestClass.Designer.vb">
+      <DependentUpon>TestClass.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Testes\TestClass.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DemoPrint.resx">
@@ -130,6 +139,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Testes\TestClass.resx">
+      <DependentUpon>TestClass.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

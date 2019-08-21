@@ -29,6 +29,10 @@ Partial Class FrmPrintPedido
         Me.dg = New System.Windows.Forms.DataGridView()
         Me.lblTotalReg = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.Button5 = New System.Windows.Forms.Button()
+        Me.Button6 = New System.Windows.Forms.Button()
         CType(Me.dg, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -67,13 +71,13 @@ Partial Class FrmPrintPedido
         Me.dg.Location = New System.Drawing.Point(20, 65)
         Me.dg.Name = "dg"
         Me.dg.ReadOnly = True
-        Me.dg.Size = New System.Drawing.Size(1080, 331)
+        Me.dg.Size = New System.Drawing.Size(1080, 417)
         Me.dg.TabIndex = 3
         '
         'lblTotalReg
         '
         Me.lblTotalReg.AutoSize = True
-        Me.lblTotalReg.Location = New System.Drawing.Point(1041, 399)
+        Me.lblTotalReg.Location = New System.Drawing.Point(1048, 49)
         Me.lblTotalReg.Name = "lblTotalReg"
         Me.lblTotalReg.Size = New System.Drawing.Size(50, 13)
         Me.lblTotalReg.TabIndex = 4
@@ -81,18 +85,68 @@ Partial Class FrmPrintPedido
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(290, 417)
+        Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
+        Me.Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button2.Location = New System.Drawing.Point(214, 487)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.Size = New System.Drawing.Size(175, 47)
         Me.Button2.TabIndex = 5
-        Me.Button2.Text = "Button2"
+        Me.Button2.Text = "QR Code Reduzido"
         Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.Image = CType(resources.GetObject("Button3.Image"), System.Drawing.Image)
+        Me.Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button3.Location = New System.Drawing.Point(392, 487)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(175, 47)
+        Me.Button3.TabIndex = 5
+        Me.Button3.Text = "Imprimir Volume QR"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'Button4
+        '
+        Me.Button4.Image = CType(resources.GetObject("Button4.Image"), System.Drawing.Image)
+        Me.Button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button4.Location = New System.Drawing.Point(570, 487)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(175, 47)
+        Me.Button4.TabIndex = 5
+        Me.Button4.Text = "Imprimir Volume"
+        Me.Button4.UseVisualStyleBackColor = True
+        '
+        'Button5
+        '
+        Me.Button5.Image = CType(resources.GetObject("Button5.Image"), System.Drawing.Image)
+        Me.Button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button5.Location = New System.Drawing.Point(748, 487)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(175, 47)
+        Me.Button5.TabIndex = 5
+        Me.Button5.Text = "Imprimir Normal"
+        Me.Button5.UseVisualStyleBackColor = True
+        '
+        'Button6
+        '
+        Me.Button6.Image = CType(resources.GetObject("Button6.Image"), System.Drawing.Image)
+        Me.Button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button6.Location = New System.Drawing.Point(926, 487)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(175, 47)
+        Me.Button6.TabIndex = 5
+        Me.Button6.Text = "Fechar"
+        Me.Button6.UseVisualStyleBackColor = True
         '
         'FrmPrintPedido
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1120, 450)
+        Me.ClientSize = New System.Drawing.Size(1120, 536)
+        Me.Controls.Add(Me.Button6)
+        Me.Controls.Add(Me.Button5)
+        Me.Controls.Add(Me.Button4)
+        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.lblTotalReg)
         Me.Controls.Add(Me.dg)
@@ -100,7 +154,8 @@ Partial Class FrmPrintPedido
         Me.Controls.Add(Me.txtPedido)
         Me.Controls.Add(Me.Label1)
         Me.Name = "FrmPrintPedido"
-        Me.Text = "FrmPrintPedido"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "Impressão de Etiquetas de Caixas de Pedido"
         CType(Me.dg, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -113,4 +168,8 @@ Partial Class FrmPrintPedido
     Friend WithEvents dg As DataGridView
     Friend WithEvents lblTotalReg As Label
     Friend WithEvents Button2 As Button
+    Friend WithEvents Button3 As Button
+    Friend WithEvents Button4 As Button
+    Friend WithEvents Button5 As Button
+    Friend WithEvents Button6 As Button
 End Class
