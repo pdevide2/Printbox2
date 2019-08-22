@@ -63,7 +63,6 @@ Public Class FrmPrintPedido
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         PrintNormal()
-
     End Sub
 
     Private Sub PrintNormal()
@@ -158,27 +157,180 @@ Public Class FrmPrintPedido
 
         Return sZebraText
     End Function
-    Private Sub ImprimeZebraZT230(ByVal strTextoZebra)
-        Dim ipAddress As String = "172.16.16.250"
-        Dim port As Integer = 6101
+    Private Function GeraTextoVolumeCode128(ByVal _pedido As String, ByVal _produto As String,
+                                            ByVal _pack As String, ByVal _volume As Integer, ByVal _qtde As Integer) As String
+        Dim sZebraText As String
+        Dim sVolume As String
+
+        If _volume >= 1000 Then
+            sVolume = Format(_volume, "0000")
+        Else
+            sVolume = Format(_volume, "000")
+        End If
+        sZebraText = "CT~~CD,~CC^~CT~"
+        sZebraText += "^XA~TA000~JSN^LT0^MNW^MTD^PON^PMN^LH0,0^JMA^PR4,4~SD15^JUS^LRN^CI0^XZ"
+        sZebraText += "^XA"
+        sZebraText += "^MMT"
+        sZebraText += "^PW831"
+        sZebraText += "^LL0208"
+        sZebraText += "^LS0"
+        sZebraText += "^BY3,3,64^FT59,96^BCN,,Y,N"
+        sZebraText += "^FD>:" & _pack & "|>" & _produto & ">6|>5" & _pedido & ">6|" & sVolume & "^FS"
+        sZebraText += "^FT656,152^A0N,23,24^FH\^FDVol. " & _volume & "/" & _qtde & "^FS"
+        sZebraText += "^FT511,152^A0N,23,24^FH\^FDQtde: " & _qtde & "^FS"
+        sZebraText += "^FT267,152^A0N,23,24^FH\^FDProduto: " & _produto & "^FS"
+        sZebraText += "^FT60,152^A0N,23,24^FH\^FDPedido: " & _pedido & "^FS"
+        sZebraText += "^PQ1,0,1,Y^XZ"
+
+
+        Return sZebraText
+    End Function
+
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        PrintVolumeBarcode128(txtPedido.Text)
+    End Sub
+
+    Private Sub PrintVolumeBarcode128(ByVal _pedido As String)
+        Dim dt As New DataTable
+        Dim da As SqlDataAdapter
+        Dim sql As String
 
         Try
-            Dim client As System.Net.Sockets.TcpClient = New Net.Sockets.TcpClient()
-            client.Connect(ipAddress, port)
-            'client.Connect(ipAddress,)
+            abrir()
+            sql = " select	(select top 1 packs "
+            sql += " 			from compras_produto cp "
+            sql += " 			where cp.pedido = tab1.PEDIDO and cp.PRODUTO=tab1.PRODUTO) as pack, "
+            sql += " 		tab1.* "
+            sql += " from ( "
+            sql += " select a.pedido, b.produto, count(B.produto) as qtd_cores, "
+            sql += " max(CAST(TOT_QTDE_ORIGINAL/C.QTDE AS INT)) as qtde_total "
+            sql += " from compras a "
+            sql += " inner join compras_produto b on b.pedido = a.pedido "
+            sql += " INNER JOIN CAEDU_COMPRAS_PRODUTOS_PACKS_TOTAL C ON C.PEDIDO = A.PEDIDO "
+            sql += " where a.pedido= '" & _pedido & "' "
+            sql += " group by a.pedido, b.produto) as tab1 "
 
-            Dim writer As System.IO.StreamWriter = New System.IO.StreamWriter(client.GetStream())
-            writer.Write(strTextoZebra)
-            writer.Flush()
+            da = New SqlDataAdapter(sql, conn)
+            da.Fill(dt)
 
-            'Fechando a conexao
-            writer.Close()
-            client.Close()
+            Dim _pack As String, _produto As String, _volume As Integer, _qtde As Integer
 
+            For Each row As DataRow In dt.Rows
+                _pack = row("pack").ToString
+                _produto = row("produto").ToString
+                _qtde = CInt(row("qtde_total"))
+
+                If rbTodos.Checked Then
+                    For i = 1 To _qtde
+                        Dim sZebraText = GeraTextoVolumeCode128(_pedido, _produto, _pack, i, _qtde)
+                        ImprimeZebraZT230(sZebraText)
+                    Next
+                End If
+
+                If rbFaixa.Checked Then
+                    For i = NumericUpDown1.Value To NumericUpDown2.Value
+                        Dim sZebraText = GeraTextoVolumeCode128(_pedido, _produto, _pack, i, _qtde)
+                        ImprimeZebraZT230(sZebraText)
+                    Next
+                End If
+
+            Next
 
         Catch ex As Exception
+            MessageBox.Show("Erro na Pesquisa " + ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
+        Finally
+            fechar()
         End Try
+
+
+
     End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        PrintVolumeQRCode(txtPedido.Text)
+    End Sub
+
+    Private Sub PrintVolumeQRCode(ByVal _pedido As String)
+        Dim dt As New DataTable
+        Dim da As SqlDataAdapter
+        Dim sql As String
+
+        Try
+            abrir()
+            sql = " select	(select top 1 packs "
+            sql += " 			from compras_produto cp "
+            sql += " 			where cp.pedido = tab1.PEDIDO and cp.PRODUTO=tab1.PRODUTO) as pack, "
+            sql += " 		tab1.* "
+            sql += " from ( "
+            sql += " select a.pedido, b.produto, count(B.produto) as qtd_cores, "
+            sql += " max(CAST(TOT_QTDE_ORIGINAL/C.QTDE AS INT)) as qtde_total "
+            sql += " from compras a "
+            sql += " inner join compras_produto b on b.pedido = a.pedido "
+            sql += " INNER JOIN CAEDU_COMPRAS_PRODUTOS_PACKS_TOTAL C ON C.PEDIDO = A.PEDIDO "
+            sql += " where a.pedido= '" & _pedido & "' "
+            sql += " group by a.pedido, b.produto) as tab1 "
+
+            da = New SqlDataAdapter(sql, conn)
+            da.Fill(dt)
+
+            Dim _pack As String, _produto As String, _volume As Integer, _qtde As Integer
+
+            For Each row As DataRow In dt.Rows
+                _pack = row("pack").ToString
+                _produto = Trim(row("produto").ToString)
+                _qtde = CInt(row("qtde_total"))
+
+                If rbTodos.Checked Then
+                    For i = 1 To _qtde
+                        Dim sZebraText = GeraTextoVolumeQRCode(_pedido, _produto, _pack, i, _qtde)
+                        ImprimeZebraZT230(sZebraText)
+                    Next
+                End If
+
+                If rbFaixa.Checked Then
+                    For i = NumericUpDown1.Value To NumericUpDown2.Value
+                        Dim sZebraText = GeraTextoVolumeQRCode(_pedido, _produto, _pack, i, _qtde)
+                        ImprimeZebraZT230(sZebraText)
+                    Next
+                End If
+
+            Next
+
+        Catch ex As Exception
+            MessageBox.Show("Erro na Pesquisa " + ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+        Finally
+            fechar()
+        End Try
+
+    End Sub
+
+    Private Function GeraTextoVolumeQRCode(ByVal _pedido As String, ByVal _produto As String,
+                                            ByVal _pack As String, ByVal _volume As Integer, ByVal _qtde As Integer) As String
+        Dim sZebraText As String
+        Dim sVolume As String
+
+        If _volume >= 1000 Then
+            sVolume = Format(_volume, "0000")
+        Else
+            sVolume = Format(_volume, "000")
+        End If
+        sZebraText = "CT~~CD,~CC^~CT~"
+        sZebraText += "^XA~TA000~JSN^LT0^MNW^MTD^PON^PMN^LH0,0^JMA^PR4,4~SD15^JUS^LRN^CI0^XZ"
+        sZebraText += "^XA"
+        sZebraText += "^MMT"
+        sZebraText += "^PW831"
+        sZebraText += "^LL0208"
+        sZebraText += "^LS0"
+        sZebraText += "^FT193,165^BQN,2,4"
+        sZebraText += "^FH\^FDLA," & _pack & "|" & _produto & "|" & Trim(_pedido) & "|" & sVolume & "^FS"
+        sZebraText += "^FT323,81^A0N,28,28^FH\^FD" & _pack & "|" & _produto & "|" & Trim(_pedido) & "|" & sVolume & "^FS"
+        sZebraText += "^FT451,145^A0N,28,28^FH\^FDVolume: " & _volume & "/" & _qtde & "^FS"
+        sZebraText += "^PQ1,0,1,Y^XZ"
+
+        Return sZebraText
+    End Function
 
 End Class

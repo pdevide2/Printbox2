@@ -22,4 +22,12 @@
         txtOrdemRota.Text = obj.OrdemRota
         txtSufixoFilial.Text = obj.SufixoFilial
     End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        txtResult.Text = txtTexto.Text.PadLeft(CInt(txtTamanho.Text), " ")
+    End Sub
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        txtResult.Text = txtTexto.Text.PadRight(CInt(txtTamanho.Text), " ")
+    End Sub
 End Class

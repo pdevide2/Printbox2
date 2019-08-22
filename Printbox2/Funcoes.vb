@@ -46,4 +46,28 @@ Module Funcoes
         fluxoTexto.Close()
         Return texto
     End Function
+
+    Public Sub ImprimeZebraZT230(ByVal strTextoZebra)
+        Dim ipAddress As String = "172.16.16.250"
+        Dim port As Integer = 6101
+
+        Try
+            Dim client As System.Net.Sockets.TcpClient = New Net.Sockets.TcpClient()
+            client.Connect(ipAddress, port)
+            'client.Connect(ipAddress,)
+
+            Dim writer As System.IO.StreamWriter = New System.IO.StreamWriter(client.GetStream())
+            writer.Write(strTextoZebra)
+            writer.Flush()
+
+            'Fechando a conexao
+            writer.Close()
+            client.Close()
+
+
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
 End Module

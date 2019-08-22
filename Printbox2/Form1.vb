@@ -21,4 +21,10 @@
         form.MdiParent = Me
         form.Show()
     End Sub
+
+    Private Sub ImprimirEtiquetasDeCaixasWMSToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ImprimirEtiquetasDeCaixasWMSToolStripMenuItem.Click
+        Dim form = New FrmPrintWMS
+        form.MdiParent = Me
+        form.Show()
+    End Sub
 End Class

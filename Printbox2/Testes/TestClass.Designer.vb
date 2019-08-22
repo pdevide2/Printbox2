@@ -56,6 +56,13 @@ Partial Class TestClass
         Me.txtOrdemRota = New System.Windows.Forms.TextBox()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.txtSufixoFilial = New System.Windows.Forms.TextBox()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.txtTamanho = New System.Windows.Forms.TextBox()
+        Me.txtResult = New System.Windows.Forms.TextBox()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.txtTexto = New System.Windows.Forms.TextBox()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Label1
@@ -332,11 +339,75 @@ Partial Class TestClass
         Me.txtSufixoFilial.Size = New System.Drawing.Size(180, 20)
         Me.txtSufixoFilial.TabIndex = 15
         '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(418, 192)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(34, 13)
+        Me.Label17.TabIndex = 17
+        Me.Label17.Text = "Texto"
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Location = New System.Drawing.Point(418, 234)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(73, 13)
+        Me.Label18.TabIndex = 17
+        Me.Label18.Text = "Qtde espaços"
+        '
+        'txtTamanho
+        '
+        Me.txtTamanho.Location = New System.Drawing.Point(500, 230)
+        Me.txtTamanho.Name = "txtTamanho"
+        Me.txtTamanho.Size = New System.Drawing.Size(100, 20)
+        Me.txtTamanho.TabIndex = 18
+        '
+        'txtResult
+        '
+        Me.txtResult.Location = New System.Drawing.Point(501, 263)
+        Me.txtResult.Name = "txtResult"
+        Me.txtResult.Size = New System.Drawing.Size(261, 20)
+        Me.txtResult.TabIndex = 19
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(607, 229)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(75, 23)
+        Me.Button3.TabIndex = 20
+        Me.Button3.Text = "padl"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'txtTexto
+        '
+        Me.txtTexto.Location = New System.Drawing.Point(501, 192)
+        Me.txtTexto.Name = "txtTexto"
+        Me.txtTexto.Size = New System.Drawing.Size(261, 20)
+        Me.txtTexto.TabIndex = 21
+        '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(692, 230)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(75, 23)
+        Me.Button4.TabIndex = 22
+        Me.Button4.Text = "padR"
+        Me.Button4.UseVisualStyleBackColor = True
+        '
         'TestClass
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.Button4)
+        Me.Controls.Add(Me.txtTexto)
+        Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.txtResult)
+        Me.Controls.Add(Me.txtTamanho)
+        Me.Controls.Add(Me.Label18)
+        Me.Controls.Add(Me.Label17)
         Me.Controls.Add(Me.Label16)
         Me.Controls.Add(Me.txtSufixoFilial)
         Me.Controls.Add(Me.Label15)
@@ -412,4 +483,11 @@ Partial Class TestClass
     Friend WithEvents txtOrdemRota As TextBox
     Friend WithEvents Label16 As Label
     Friend WithEvents txtSufixoFilial As TextBox
+    Friend WithEvents Label17 As Label
+    Friend WithEvents Label18 As Label
+    Friend WithEvents txtTamanho As TextBox
+    Friend WithEvents txtResult As TextBox
+    Friend WithEvents Button3 As Button
+    Friend WithEvents txtTexto As TextBox
+    Friend WithEvents Button4 As Button
 End Class

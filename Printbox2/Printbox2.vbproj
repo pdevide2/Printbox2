@@ -99,6 +99,12 @@
     <Compile Include="FrmPrintPedido.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmPrintWMS.Designer.vb">
+      <DependentUpon>FrmPrintWMS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPrintWMS.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Funcoes.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -133,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPrintPedido.resx">
       <DependentUpon>FrmPrintPedido.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrintWMS.resx">
+      <DependentUpon>FrmPrintWMS.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
