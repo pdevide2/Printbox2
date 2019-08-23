@@ -1,6 +1,7 @@
 ﻿
 Imports System.Data.SqlClient
 Public Class FrmPrintWMS
+    Dim listaCodigos As List(Of Long)
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles btnSair.Click
         Me.Close()
     End Sub
@@ -49,19 +50,42 @@ Public Class FrmPrintWMS
     End Sub
     Private Sub FormatarDG()
         'dg.Columns(0).Visible = False
-        dg.Columns(0).HeaderText = "Distribuição"
-        dg.Columns(1).HeaderText = "Caixa"
-        dg.Columns(2).HeaderText = "Venda"
-        dg.Columns(3).HeaderText = "Produto"
-        dg.Columns(4).HeaderText = "Filial"
-        dg.Columns(4).Width = 160
-        dg.Columns(5).HeaderText = "Filial Origem"
-        dg.Columns(5).Width = 160
-        dg.Columns(6).HeaderText = "Qtde Total"
-        dg.Columns(6).Width = 70
-        dg.Columns(7).HeaderText = "Data"
-        For i = 8 To 11
-            dg.Columns(i).Visible = False
+        dg.Columns("distribuicao").HeaderText = "Distribuição"
+        dg.Columns("caixa").HeaderText = "Caixa"
+        dg.Columns("venda").HeaderText = "Venda"
+        dg.Columns("produto").HeaderText = "Produto"
+        dg.Columns("filial").HeaderText = "Filial"
+        dg.Columns("filial").Width = 160
+        dg.Columns("filial_origem").HeaderText = "Filial Origem"
+        dg.Columns("filial_origem").Width = 160
+        dg.Columns("qtde_total").HeaderText = "Qtde Total"
+        dg.Columns("qtde_total").Width = 70
+        dg.Columns("data").HeaderText = "Data"
+        dg.Columns("pack").HeaderText = "Pack"
+        dg.Columns("pack").Width = 55
+
+        dg.Columns("qtde_pack").Visible = False
+        dg.Columns("romaneio").Visible = False
+        dg.Columns("gerado").Visible = False
+        dg.Columns("pack").Visible = True
+
+        Dim coluna As New DataGridViewCheckBoxColumn()
+        With coluna
+            .HeaderText = "Secionar"
+            .Name = "colSelecao"
+            .AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+            .FlatStyle = FlatStyle.Standard
+            .CellTemplate = New DataGridViewCheckBoxCell()
+            .CellTemplate.Style.BackColor = Color.Beige
+        End With
+        dg.Columns.Insert(0, coluna)
+
+        For i = 1 To dg.DisplayedColumnCount(True) - 1
+            dg.Columns(i).ReadOnly = True
+        Next
+        'Marca todas as colunas como True (flagado)
+        For Each row As DataGridViewRow In dg.Rows
+            row.Cells(0).Value = True
         Next
 
 
@@ -140,14 +164,23 @@ Public Class FrmPrintWMS
 
             Dim _pedido As String, _caixa As String, _produto As String, _filial As String, _qtde_total As Integer
 
+            criarLista() 'Cria lista das caixas selecionadas para impressão
+
+
             For Each row As DataRow In dt.Rows
                 _pedido = row("distribuicao").ToString
                 _caixa = row("caixa").ToString
                 _produto = row("produto").ToString
                 _filial = row("filial").ToString
                 _qtde_total = CInt(row("qtde_total"))
-                Dim sZebraText = GeraTextoNormalPrintWMS(_pedido, _caixa, _produto, _filial, _qtde_total)
-                ImprimeZebraZT230(sZebraText)
+
+                If buscaSelecionado(CLng(_caixa)) <> -1 Then
+
+                    Dim sZebraText = GeraTextoNormalPrintWMS(_pedido, _caixa, _produto, _filial, _qtde_total)
+                    ImprimeZebraZT230(sZebraText)
+
+                End If
+
             Next
 
 
@@ -273,4 +306,52 @@ Public Class FrmPrintWMS
         Return sZebraText
     End Function
 
+    Private Sub criarLista()
+        listaCodigos = New List(Of Long)()
+
+
+        For Each row As DataGridViewRow In Me.dg.Rows
+
+            If Not row.IsNewRow Then
+
+                If row.Cells(0).Value = True Then
+                    listaCodigos.Add(CLng(row.Cells("caixa").Value))
+                End If
+
+            End If
+
+        Next
+    End Sub
+    Private Function buscaSelecionado(_caixa As Long) As Long
+        'criarLista()
+        Dim retCodigo As Integer
+
+
+        retCodigo = listaCodigos.IndexOf(_caixa)
+
+        'If retCodigo = -1 Then
+        '    retCodigo = i
+        'End If
+
+        Return retCodigo
+    End Function
+
+    Private Sub BtnMarcar_Click(sender As Object, e As EventArgs) Handles btnMarcar.Click
+        If btnMarcar.Text = "Desmarcar Tudo" Then
+            'Marca todas as colunas como True (flagado)
+            For Each row As DataGridViewRow In dg.Rows
+                row.Cells(0).Value = False
+            Next
+
+            btnMarcar.Text = "Marcar Tudo"
+        Else
+            'Marca todas as colunas como True (flagado)
+            For Each row As DataGridViewRow In dg.Rows
+                row.Cells(0).Value = True
+            Next
+
+            btnMarcar.Text = "Desmarcar Tudo"
+        End If
+
+    End Sub
 End Class

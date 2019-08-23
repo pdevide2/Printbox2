@@ -40,6 +40,7 @@ Partial Class FrmPrintWMS
         Me.btnVolumeNormal = New System.Windows.Forms.Button()
         Me.btnVolumeQRCode = New System.Windows.Forms.Button()
         Me.btnVolumeQRCodeReduzido = New System.Windows.Forms.Button()
+        Me.btnMarcar = New System.Windows.Forms.Button()
         CType(Me.dg, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -88,7 +89,6 @@ Partial Class FrmPrintWMS
         Me.dg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dg.Location = New System.Drawing.Point(28, 49)
         Me.dg.Name = "dg"
-        Me.dg.ReadOnly = True
         Me.dg.Size = New System.Drawing.Size(1080, 417)
         Me.dg.TabIndex = 7
         '
@@ -212,11 +212,21 @@ Partial Class FrmPrintWMS
         Me.btnVolumeQRCodeReduzido.Text = "QR Code Reduzido"
         Me.btnVolumeQRCodeReduzido.UseVisualStyleBackColor = True
         '
+        'btnMarcar
+        '
+        Me.btnMarcar.Location = New System.Drawing.Point(28, 478)
+        Me.btnMarcar.Name = "btnMarcar"
+        Me.btnMarcar.Size = New System.Drawing.Size(109, 23)
+        Me.btnMarcar.TabIndex = 20
+        Me.btnMarcar.Text = "Desmarcar Tudo"
+        Me.btnMarcar.UseVisualStyleBackColor = True
+        '
         'FrmPrintWMS
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1120, 576)
+        Me.Controls.Add(Me.btnMarcar)
         Me.Controls.Add(Me.btnVolumeQRCodeReduzido)
         Me.Controls.Add(Me.btnVolumeQRCode)
         Me.Controls.Add(Me.btnVolumeNormal)
@@ -261,4 +271,5 @@ Partial Class FrmPrintWMS
     Friend WithEvents btnVolumeNormal As Button
     Friend WithEvents btnVolumeQRCode As Button
     Friend WithEvents btnVolumeQRCodeReduzido As Button
+    Friend WithEvents btnMarcar As Button
 End Class

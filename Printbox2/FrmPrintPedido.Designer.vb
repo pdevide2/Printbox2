@@ -22,6 +22,7 @@ Partial Class FrmPrintPedido
     'Não o modifique usando o editor de códigos.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmPrintPedido))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtPedido = New System.Windows.Forms.TextBox()
@@ -40,6 +41,8 @@ Partial Class FrmPrintPedido
         Me.Label4 = New System.Windows.Forms.Label()
         Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
         Me.NumericUpDown2 = New System.Windows.Forms.NumericUpDown()
+        Me.btnMarcar = New System.Windows.Forms.Button()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         CType(Me.dg, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -79,7 +82,6 @@ Partial Class FrmPrintPedido
         Me.dg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dg.Location = New System.Drawing.Point(20, 65)
         Me.dg.Name = "dg"
-        Me.dg.ReadOnly = True
         Me.dg.Size = New System.Drawing.Size(1080, 417)
         Me.dg.TabIndex = 3
         '
@@ -134,6 +136,7 @@ Partial Class FrmPrintPedido
         Me.Button5.Size = New System.Drawing.Size(175, 47)
         Me.Button5.TabIndex = 5
         Me.Button5.Text = "Imprimir Normal"
+        Me.ToolTip1.SetToolTip(Me.Button5, "Imprime somente as caixas selecionadas")
         Me.Button5.UseVisualStyleBackColor = True
         '
         'Button6
@@ -212,11 +215,21 @@ Partial Class FrmPrintPedido
         Me.NumericUpDown2.TabIndex = 10
         Me.NumericUpDown2.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
+        'btnMarcar
+        '
+        Me.btnMarcar.Location = New System.Drawing.Point(20, 493)
+        Me.btnMarcar.Name = "btnMarcar"
+        Me.btnMarcar.Size = New System.Drawing.Size(109, 23)
+        Me.btnMarcar.TabIndex = 11
+        Me.btnMarcar.Text = "Desmarcar Tudo"
+        Me.btnMarcar.UseVisualStyleBackColor = True
+        '
         'FrmPrintPedido
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1120, 576)
+        Me.Controls.Add(Me.btnMarcar)
         Me.Controls.Add(Me.NumericUpDown2)
         Me.Controls.Add(Me.NumericUpDown1)
         Me.Controls.Add(Me.Label4)
@@ -262,4 +275,6 @@ Partial Class FrmPrintPedido
     Friend WithEvents Label4 As Label
     Friend WithEvents NumericUpDown1 As NumericUpDown
     Friend WithEvents NumericUpDown2 As NumericUpDown
+    Friend WithEvents btnMarcar As Button
+    Friend WithEvents ToolTip1 As ToolTip
 End Class
