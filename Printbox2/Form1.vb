@@ -16,7 +16,7 @@
         Application.Exit()
     End Sub
 
-    Private Sub TesteClasseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TesteClasseToolStripMenuItem.Click
+    Private Sub TesteClasseToolStripMenuItem_Click(sender As Object, e As EventArgs)
         Dim form = New TestClass
         form.MdiParent = Me
         form.Show()
@@ -26,5 +26,13 @@
         Dim form = New FrmPrintWMS
         form.MdiParent = Me
         form.Show()
+    End Sub
+
+    Private Sub ImprimirEtiquetasWMSImportadoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ImprimirEtiquetasWMSImportadoToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub ImprimirEtiquetasDeCaixasEurekaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ImprimirEtiquetasDeCaixasEurekaToolStripMenuItem.Click
+
     End Sub
 End Class

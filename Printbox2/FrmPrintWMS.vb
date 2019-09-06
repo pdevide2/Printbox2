@@ -1,7 +1,8 @@
 ﻿
 Imports System.Data.SqlClient
 Public Class FrmPrintWMS
-    Dim listaCodigos As List(Of Long)
+    Dim listaCodigos As List(Of Long)
+
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles btnSair.Click
         Me.Close()
     End Sub
@@ -116,12 +117,161 @@ Public Class FrmPrintWMS
     End Sub
 
     Private Sub BtnVolumeQRCode_Click(sender As Object, e As EventArgs) Handles btnVolumeQRCode.Click
+        PrintVolumeQRCode(txtDistribuicao.Text)
+    End Sub
+    Private Sub PrintVolumeQRCode(ByVal _pedido As String)
+        Dim dt As New DataTable
+        Dim da As SqlDataAdapter
+        Dim sql As String
+
+        Try
+            abrir()
+            sql = " select a.distribuicao as pedido, a.produto, count(a.produto) as qtd_cores, "
+            sql += " count(a.QTDE_PACK) as qtde_total, max(a.pack) as packs, max(a.qtde_total) as qtde "
+            sql += " from caedu_reserva_automatica_pack_wms a "
+            sql += " where a.distribuicao= '" & _pedido & "' "
+            sql += " group by a.distribuicao, a.produto "
+
+
+            da = New SqlDataAdapter(sql, conn)
+            da.Fill(dt)
+
+            Dim _pack As String, _produto As String, _volume As Integer, _qtde As Integer
+
+            For Each row As DataRow In dt.Rows
+                _pack = row("packs").ToString
+                _produto = Trim(row("produto").ToString)
+                _qtde = CInt(row("qtde_total"))
+
+                If rbTodos.Checked Then
+                    For i = 1 To _qtde
+                        Dim sZebraText = GeraTextoVolumeQRCode(_pedido, _produto, _pack, i, _qtde)
+                        ImprimeZebraZT230(sZebraText)
+                    Next
+                End If
+
+                If rbFaixa.Checked Then
+                    For i = NumericUpDown1.Value To NumericUpDown2.Value
+                        Dim sZebraText = GeraTextoVolumeQRCode(_pedido, _produto, _pack, i, _qtde)
+                        ImprimeZebraZT230(sZebraText)
+                    Next
+                End If
+
+            Next
+
+        Catch ex As Exception
+            MessageBox.Show("Erro na Pesquisa " + ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+        Finally
+            fechar()
+        End Try
 
     End Sub
+    Private Function GeraTextoVolumeQRCode(ByVal _pedido As String, ByVal _produto As String,
+                                            ByVal _pack As String, ByVal _volume As Integer, ByVal _qtde As Integer) As String
+        Dim sZebraText As String
+        Dim sVolume As String
+
+        If _volume >= 1000 Then
+            sVolume = Format(_volume, "0000")
+        Else
+            sVolume = Format(_volume, "000")
+        End If
+        sZebraText = "CT~~CD,~CC^~CT~"
+        sZebraText += "^XA~TA000~JSN^LT0^MNW^MTD^PON^PMN^LH0,0^JMA^PR4,4~SD15^JUS^LRN^CI0^XZ"
+        sZebraText += "^XA"
+        sZebraText += "^MMT"
+        sZebraText += "^PW831"
+        sZebraText += "^LL0208"
+        sZebraText += "^LS0"
+        sZebraText += "^FT193,165^BQN,2,4"
+        sZebraText += "^FH\^FDLA," & _pack & "|" & _produto & "|" & Trim(_pedido) & "|" & sVolume & "^FS"
+        sZebraText += "^FT323,81^A0N,28,28^FH\^FD" & _pack & "|" & _produto & "|" & Trim(_pedido) & "|" & sVolume & "^FS"
+        sZebraText += "^FT451,145^A0N,28,28^FH\^FDVolume: " & _volume & "/" & _qtde & "^FS"
+        sZebraText += "^PQ1,0,1,Y^XZ"
+
+        Return sZebraText
+    End Function
 
     Private Sub BtnVolumeQRCodeReduzido_Click(sender As Object, e As EventArgs) Handles btnVolumeQRCodeReduzido.Click
+        PrintVolumeQRCodeReduzido(txtDistribuicao.Text)
+    End Sub
+
+    Private Sub PrintVolumeQRCodeReduzido(ByVal _pedido As String)
+        Dim dt As New DataTable
+        Dim da As SqlDataAdapter
+        Dim sql As String
+
+        Try
+            abrir()
+            sql = " select a.distribuicao as pedido, a.produto, count(a.produto) as qtd_cores, "
+            sql += " count(a.QTDE_PACK) as qtde_total, max(a.pack) as packs, max(a.qtde_total) as qtde "
+            sql += " from caedu_reserva_automatica_pack_wms a "
+            sql += " where a.distribuicao= '" & _pedido & "' "
+            sql += " group by a.distribuicao, a.produto "
+
+
+            da = New SqlDataAdapter(sql, conn)
+            da.Fill(dt)
+
+            Dim _pack As String, _produto As String, _volume As Integer, _qtde As Integer
+
+            For Each row As DataRow In dt.Rows
+                _pack = row("packs").ToString
+                _produto = Trim(row("produto").ToString)
+                _qtde = CInt(row("qtde_total"))
+
+                If rbTodos.Checked Then
+                    For i = 1 To _qtde
+                        Dim sZebraText = GeraTextoVolumeQRCodeReduzido(_pedido, _produto, _pack, i, _qtde)
+                        ImprimeZebraZT230(sZebraText)
+                    Next
+                End If
+
+                If rbFaixa.Checked Then
+                    For i = NumericUpDown1.Value To NumericUpDown2.Value
+                        Dim sZebraText = GeraTextoVolumeQRCodeReduzido(_pedido, _produto, _pack, i, _qtde)
+                        ImprimeZebraZT230(sZebraText)
+                    Next
+                End If
+
+            Next
+
+        Catch ex As Exception
+            MessageBox.Show("Erro na Pesquisa " + ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+        Finally
+            fechar()
+        End Try
 
     End Sub
+
+    Private Function GeraTextoVolumeQRCodeReduzido(ByVal _pedido As String, ByVal _produto As String,
+                                            ByVal _pack As String, ByVal _volume As Integer, ByVal _qtde As Integer) As String
+        Dim sZebraText As String
+        Dim sVolume As String
+
+        If _volume >= 1000 Then
+            sVolume = Format(_volume, "0000")
+        Else
+            sVolume = Format(_volume, "000")
+        End If
+        sZebraText = "CT~~CD,~CC^~CT~"
+        sZebraText += "^XA~TA000~JSN^LT0^MNW^MTD^PON^PMN^LH0,0^JMA^PR4,4~SD15^JUS^LRN^CI0^XZ"
+        sZebraText += "^XA"
+        sZebraText += "^MMT"
+        sZebraText += "^PW831"
+        sZebraText += "^LL0208"
+        sZebraText += "^LS0"
+        sZebraText += "^FT193,165^BQN,2,4"
+        sZebraText += "^FH\^FDLA," & _pack & "|" & _produto & "|" & Trim(_pedido) & "|" & sVolume & "^FS"
+        sZebraText += "^FT323,81^A0N,28,28^FH\^FD" & _pack & "|" & _produto & "|" & Trim(_pedido) & "|" & sVolume & "^FS"
+        sZebraText += "^FT451,145^A0N,28,28^FH\^FDVolume: " & _volume & "/" & _qtde & "^FS"
+        sZebraText += "^PQ1,0,1,Y^XZ"
+
+        Return sZebraText
+    End Function
+
     Private Sub PrintNormalWMS()
         Dim dt As New DataTable
         Dim da As SqlDataAdapter
@@ -306,7 +456,8 @@ Public Class FrmPrintWMS
         Return sZebraText
     End Function
 
-    Private Sub criarLista()
+    Private Sub criarLista()
+
         listaCodigos = New List(Of Long)()
 
 
@@ -320,10 +471,14 @@ Public Class FrmPrintWMS
 
             End If
 
-        Next
-    End Sub
-    Private Function buscaSelecionado(_caixa As Long) As Long
-        'criarLista()
+        Next
+
+    End Sub
+
+    Private Function buscaSelecionado(_caixa As Long) As Long
+
+        'criarLista()
+
         Dim retCodigo As Integer
 
 
@@ -331,9 +486,11 @@ Public Class FrmPrintWMS
 
         'If retCodigo = -1 Then
         '    retCodigo = i
-        'End If
+        'End If
 
-        Return retCodigo
+
+        Return retCodigo
+
     End Function
 
     Private Sub BtnMarcar_Click(sender As Object, e As EventArgs) Handles btnMarcar.Click

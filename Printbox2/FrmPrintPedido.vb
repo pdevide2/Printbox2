@@ -1,7 +1,8 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class FrmPrintPedido
-    Dim listaCodigos As List(Of Long)
+    Dim listaCodigos As List(Of Long)
+
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Listar()
@@ -379,7 +380,8 @@ Public Class FrmPrintPedido
         End If
     End Sub
 
-    Private Sub criarLista()
+    Private Sub criarLista()
+
         listaCodigos = New List(Of Long)()
 
 
@@ -393,10 +395,14 @@ Public Class FrmPrintPedido
 
             End If
 
-        Next
-    End Sub
-    Private Function buscaSelecionado(_caixa As Long) As Long
-        'criarLista()
+        Next
+
+    End Sub
+
+    Private Function buscaSelecionado(_caixa As Long) As Long
+
+        'criarLista()
+
         Dim retCodigo As Integer
 
 
@@ -404,9 +410,11 @@ Public Class FrmPrintPedido
 
         'If retCodigo = -1 Then
         '    retCodigo = i
-        'End If
+        'End If
 
-        Return retCodigo
+
+        Return retCodigo
+
     End Function
 
 End Class

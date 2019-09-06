@@ -28,9 +28,13 @@ Partial Class FrmPrincipal
         Me.ImprimirEtiquetasDeCaixasDoPedidoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ImprimirEtiquetasDeCaixasWMSToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ConfigurarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.TesteClasseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SairToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SairToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ImprimirEtiquetasWMSImportadoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ImprimirEtiquetasDeCaixasEurekaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ConfigurarIPToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -45,7 +49,7 @@ Partial Class FrmPrincipal
         '
         'ArquivoToolStripMenuItem
         '
-        Me.ArquivoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ImprimirEtiquetasDeCaixasDoPedidoToolStripMenuItem, Me.ImprimirEtiquetasDeCaixasWMSToolStripMenuItem})
+        Me.ArquivoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ImprimirEtiquetasDeCaixasDoPedidoToolStripMenuItem, Me.ImprimirEtiquetasDeCaixasWMSToolStripMenuItem, Me.ToolStripMenuItem1, Me.ImprimirEtiquetasWMSImportadoToolStripMenuItem, Me.ToolStripMenuItem2, Me.ImprimirEtiquetasDeCaixasEurekaToolStripMenuItem})
         Me.ArquivoToolStripMenuItem.Name = "ArquivoToolStripMenuItem"
         Me.ArquivoToolStripMenuItem.Size = New System.Drawing.Size(61, 20)
         Me.ArquivoToolStripMenuItem.Text = "Arquivo"
@@ -55,7 +59,7 @@ Partial Class FrmPrincipal
         Me.ImprimirEtiquetasDeCaixasDoPedidoToolStripMenuItem.Image = CType(resources.GetObject("ImprimirEtiquetasDeCaixasDoPedidoToolStripMenuItem.Image"), System.Drawing.Image)
         Me.ImprimirEtiquetasDeCaixasDoPedidoToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ImprimirEtiquetasDeCaixasDoPedidoToolStripMenuItem.Name = "ImprimirEtiquetasDeCaixasDoPedidoToolStripMenuItem"
-        Me.ImprimirEtiquetasDeCaixasDoPedidoToolStripMenuItem.Size = New System.Drawing.Size(289, 30)
+        Me.ImprimirEtiquetasDeCaixasDoPedidoToolStripMenuItem.Size = New System.Drawing.Size(297, 38)
         Me.ImprimirEtiquetasDeCaixasDoPedidoToolStripMenuItem.Text = "Imprimir Etiquetas de Caixas do Pedido"
         '
         'ImprimirEtiquetasDeCaixasWMSToolStripMenuItem
@@ -63,21 +67,15 @@ Partial Class FrmPrincipal
         Me.ImprimirEtiquetasDeCaixasWMSToolStripMenuItem.Image = CType(resources.GetObject("ImprimirEtiquetasDeCaixasWMSToolStripMenuItem.Image"), System.Drawing.Image)
         Me.ImprimirEtiquetasDeCaixasWMSToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ImprimirEtiquetasDeCaixasWMSToolStripMenuItem.Name = "ImprimirEtiquetasDeCaixasWMSToolStripMenuItem"
-        Me.ImprimirEtiquetasDeCaixasWMSToolStripMenuItem.Size = New System.Drawing.Size(289, 30)
+        Me.ImprimirEtiquetasDeCaixasWMSToolStripMenuItem.Size = New System.Drawing.Size(297, 38)
         Me.ImprimirEtiquetasDeCaixasWMSToolStripMenuItem.Text = "Imprimir Etiquetas de Caixas WMS"
         '
         'ConfigurarToolStripMenuItem
         '
-        Me.ConfigurarToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TesteClasseToolStripMenuItem})
+        Me.ConfigurarToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConfigurarIPToolStripMenuItem})
         Me.ConfigurarToolStripMenuItem.Name = "ConfigurarToolStripMenuItem"
         Me.ConfigurarToolStripMenuItem.Size = New System.Drawing.Size(76, 20)
         Me.ConfigurarToolStripMenuItem.Text = "Configurar"
-        '
-        'TesteClasseToolStripMenuItem
-        '
-        Me.TesteClasseToolStripMenuItem.Name = "TesteClasseToolStripMenuItem"
-        Me.TesteClasseToolStripMenuItem.Size = New System.Drawing.Size(136, 22)
-        Me.TesteClasseToolStripMenuItem.Text = "Teste Classe"
         '
         'SairToolStripMenuItem
         '
@@ -91,8 +89,42 @@ Partial Class FrmPrincipal
         Me.SairToolStripMenuItem1.Image = CType(resources.GetObject("SairToolStripMenuItem1.Image"), System.Drawing.Image)
         Me.SairToolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.SairToolStripMenuItem1.Name = "SairToolStripMenuItem1"
-        Me.SairToolStripMenuItem1.Size = New System.Drawing.Size(196, 38)
+        Me.SairToolStripMenuItem1.Size = New System.Drawing.Size(109, 38)
         Me.SairToolStripMenuItem1.Text = "Sair"
+        '
+        'ToolStripMenuItem1
+        '
+        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(294, 6)
+        '
+        'ImprimirEtiquetasWMSImportadoToolStripMenuItem
+        '
+        Me.ImprimirEtiquetasWMSImportadoToolStripMenuItem.Image = CType(resources.GetObject("ImprimirEtiquetasWMSImportadoToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.ImprimirEtiquetasWMSImportadoToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ImprimirEtiquetasWMSImportadoToolStripMenuItem.Name = "ImprimirEtiquetasWMSImportadoToolStripMenuItem"
+        Me.ImprimirEtiquetasWMSImportadoToolStripMenuItem.Size = New System.Drawing.Size(297, 38)
+        Me.ImprimirEtiquetasWMSImportadoToolStripMenuItem.Text = "Imprimir Etiquetas WMS Importado"
+        '
+        'ToolStripMenuItem2
+        '
+        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(294, 6)
+        '
+        'ImprimirEtiquetasDeCaixasEurekaToolStripMenuItem
+        '
+        Me.ImprimirEtiquetasDeCaixasEurekaToolStripMenuItem.Image = CType(resources.GetObject("ImprimirEtiquetasDeCaixasEurekaToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.ImprimirEtiquetasDeCaixasEurekaToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ImprimirEtiquetasDeCaixasEurekaToolStripMenuItem.Name = "ImprimirEtiquetasDeCaixasEurekaToolStripMenuItem"
+        Me.ImprimirEtiquetasDeCaixasEurekaToolStripMenuItem.Size = New System.Drawing.Size(297, 38)
+        Me.ImprimirEtiquetasDeCaixasEurekaToolStripMenuItem.Text = "Imprimir Etiquetas de Caixas Eureka"
+        '
+        'ConfigurarIPToolStripMenuItem
+        '
+        Me.ConfigurarIPToolStripMenuItem.Image = CType(resources.GetObject("ConfigurarIPToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.ConfigurarIPToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ConfigurarIPToolStripMenuItem.Name = "ConfigurarIPToolStripMenuItem"
+        Me.ConfigurarIPToolStripMenuItem.Size = New System.Drawing.Size(196, 38)
+        Me.ConfigurarIPToolStripMenuItem.Text = "Configurar IP"
         '
         'FrmPrincipal
         '
@@ -122,6 +154,10 @@ Partial Class FrmPrincipal
     Friend WithEvents SairToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SairToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents ImprimirEtiquetasDeCaixasDoPedidoToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents TesteClasseToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ImprimirEtiquetasDeCaixasWMSToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem1 As ToolStripSeparator
+    Friend WithEvents ImprimirEtiquetasWMSImportadoToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem2 As ToolStripSeparator
+    Friend WithEvents ImprimirEtiquetasDeCaixasEurekaToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ConfigurarIPToolStripMenuItem As ToolStripMenuItem
 End Class
