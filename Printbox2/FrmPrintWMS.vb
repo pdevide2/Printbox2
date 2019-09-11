@@ -201,15 +201,31 @@ Public Class FrmPrintWMS
         Dim dt As New DataTable
         Dim da As SqlDataAdapter
         Dim sql As String
-
+        Dim i As Integer
+        Dim sHeader As String, sFooter As String
+        Dim sBody(2) As String
+        Dim sZebraText As String = ""
         Try
             abrir()
+
             sql = " select a.distribuicao as pedido, a.produto, count(a.produto) as qtd_cores, "
             sql += " count(a.QTDE_PACK) as qtde_total, max(a.pack) as packs, max(a.qtde_total) as qtde "
             sql += " from caedu_reserva_automatica_pack_wms a "
             sql += " where a.distribuicao= '" & _pedido & "' "
             sql += " group by a.distribuicao, a.produto "
 
+            'sql = " select	(select top 1 packs "
+            'sql += " 			from compras_produto cp "
+            'sql += " 			where cp.pedido = tab1.PEDIDO and cp.PRODUTO=tab1.PRODUTO) as pack, "
+            'sql += " 		tab1.* "
+            'sql += " from ( "
+            'sql += " select a.pedido, b.produto, count(B.produto) as qtd_cores, "
+            'sql += " max(CAST(TOT_QTDE_ORIGINAL/C.QTDE AS INT)) as qtde_total "
+            'sql += " from compras a "
+            'sql += " inner join compras_produto b on b.pedido = a.pedido "
+            'sql += " INNER JOIN CAEDU_COMPRAS_PRODUTOS_PACKS_TOTAL C ON C.PEDIDO = A.PEDIDO "
+            'sql += " where a.pedido= '" & _pedido & "' "
+            'sql += " group by a.pedido, b.produto) as tab1 "
 
             da = New SqlDataAdapter(sql, conn)
             da.Fill(dt)
@@ -222,17 +238,58 @@ Public Class FrmPrintWMS
                 _qtde = CInt(row("qtde_total"))
 
                 If rbTodos.Checked Then
-                    For i = 1 To _qtde
-                        Dim sZebraText = GeraTextoVolumeQRCodeReduzido(_pedido, _produto, _pack, i, _qtde)
+                    i = 1
+                    While i <= _qtde
+                        sHeader = "CT~~CD,~CC^~CT~"
+                        sHeader += "^XA~TA000~JSN^LT0^MNW^MTD^PON^PMN^LH0,0^JMA^PR4,4~SD15^JUS^LRN^CI0^XZ"
+                        sHeader += "^XA"
+                        sHeader += "^MMT"
+                        sHeader += "^PW839"
+                        sHeader += "^LL0232"
+                        sHeader += "^LS0"
+                        'Reseta a variavel que acumula os conteudos do corpo da etiqueta
+                        sZebraText = ""
+                        For nn = 1 To 3
+                            sBody(nn - 1) = GeraTextoVolumeQRCodeReduzido(nn, _pedido, _produto, _pack, i, _qtde)
+                            sZebraText += sBody(nn - 1)
+                            i += 1
+                            If i > _qtde Then
+                                Exit For
+                            End If
+                        Next
+                        sFooter = "^PQ1,0,1,Y^XZ"
+                        sZebraText = sHeader & sZebraText & sFooter
                         ImprimeZebraZT230(sZebraText)
-                    Next
+
+                    End While
                 End If
 
                 If rbFaixa.Checked Then
-                    For i = NumericUpDown1.Value To NumericUpDown2.Value
-                        Dim sZebraText = GeraTextoVolumeQRCodeReduzido(_pedido, _produto, _pack, i, _qtde)
+                    i = NumericUpDown1.Value
+                    While i <= NumericUpDown2.Value
+                        sHeader = "CT~~CD,~CC^~CT~"
+                        sHeader += "^XA~TA000~JSN^LT0^MNW^MTD^PON^PMN^LH0,0^JMA^PR4,4~SD15^JUS^LRN^CI0^XZ"
+                        sHeader += "^XA"
+                        sHeader += "^MMT"
+                        sHeader += "^PW839"
+                        sHeader += "^LL0232"
+                        sHeader += "^LS0"
+                        'Reseta a variavel que acumula os conteudos do corpo da etiqueta
+                        sZebraText = ""
+                        For nn = 1 To 3
+                            sBody(nn - 1) = GeraTextoVolumeQRCodeReduzido(nn, _pedido, _produto, _pack, i, _qtde)
+                            sZebraText += sBody(nn - 1)
+                            i += 1
+                            If i > NumericUpDown2.Value Then
+                                Exit For
+                            End If
+                        Next
+                        sFooter = "^PQ1,0,1,Y^XZ"
+                        sZebraText = sHeader & sZebraText & sFooter
+
+                        'sZebraText = GeraTextoVolumeQRCode(_pedido, _produto, _pack, i, _qtde)
                         ImprimeZebraZT230(sZebraText)
-                    Next
+                    End While
                 End If
 
             Next
@@ -245,32 +302,77 @@ Public Class FrmPrintWMS
         End Try
 
     End Sub
-
-    Private Function GeraTextoVolumeQRCodeReduzido(ByVal _pedido As String, ByVal _produto As String,
+    Private Function GeraTextoVolumeQRCodeReduzido(ByVal _coluna As Integer, ByVal _pedido As String, ByVal _produto As String,
                                             ByVal _pack As String, ByVal _volume As Integer, ByVal _qtde As Integer) As String
-        Dim sZebraText As String
+        Dim sBody As String
         Dim sVolume As String
+        Dim nColuna1 As Integer, nColuna2 As Integer, nColuna3 As Integer, nColuna4 As Integer, nColuna5 As Integer
+        Dim nLinha1 As Integer, nLinha2 As Integer, nLinha3 As Integer, nLinha4 As Integer, nLinha5 As Integer
 
         If _volume >= 1000 Then
             sVolume = Format(_volume, "0000")
         Else
             sVolume = Format(_volume, "000")
         End If
-        sZebraText = "CT~~CD,~CC^~CT~"
-        sZebraText += "^XA~TA000~JSN^LT0^MNW^MTD^PON^PMN^LH0,0^JMA^PR4,4~SD15^JUS^LRN^CI0^XZ"
-        sZebraText += "^XA"
-        sZebraText += "^MMT"
-        sZebraText += "^PW831"
-        sZebraText += "^LL0208"
-        sZebraText += "^LS0"
-        sZebraText += "^FT193,165^BQN,2,4"
-        sZebraText += "^FH\^FDLA," & _pack & "|" & _produto & "|" & Trim(_pedido) & "|" & sVolume & "^FS"
-        sZebraText += "^FT323,81^A0N,28,28^FH\^FD" & _pack & "|" & _produto & "|" & Trim(_pedido) & "|" & sVolume & "^FS"
-        sZebraText += "^FT451,145^A0N,28,28^FH\^FDVolume: " & _volume & "/" & _qtde & "^FS"
-        sZebraText += "^PQ1,0,1,Y^XZ"
 
-        Return sZebraText
+        nLinha1 = 169
+        nLinha2 = 169
+        nLinha3 = 132
+        nLinha4 = 95
+        nLinha5 = 59
+
+        Select Case _coluna
+            Case 1
+                nColuna1 = 29
+                nColuna2 = 137
+                nColuna3 = 138
+                nColuna4 = 138
+                nColuna5 = 137
+            Case 2
+                nColuna1 = 301
+                nColuna2 = 409
+                nColuna3 = 410
+                nColuna4 = 410
+                nColuna5 = 409
+            Case 3
+                nColuna1 = 572
+                nColuna2 = 680
+                nColuna3 = 681
+                nColuna4 = 681
+                nColuna5 = 680
+        End Select
+
+
+        sBody = "^FT" & nColuna1 & "," & nLinha1 & "^BQN,2,4"
+        sBody += "^FH\^FDLA," & _pack & "|" & _produto & "|" & Trim(_pedido) & "|" & sVolume & "^FS" '"^FH\^FDLA,A|C8010064|00001451|012^FS"
+        sBody += "^FT" & nColuna2 & "," & nLinha2 & "^A0N,28,28^FH\^FD" & sVolume & "/" & _qtde & "^FS"
+        sBody += "^FT" & nColuna3 & "," & nLinha3 & "^A0N,28,28^FH\^FD" & Trim(_pedido) & "^FS"
+        sBody += "^FT" & nColuna4 & "," & nLinha4 & "^A0N,28,28^FH\^FD" & Trim(_produto) & "^FS"
+        sBody += "^FT" & nColuna5 & "," & nLinha5 & "^A0N,28,28^FH\^FD" & _pack & "^FS"
+
+        'sZebraText = "CT~~CD,~CC^~CT~"
+        'sZebraText += "^XA~TA000~JSN^LT0^MNW^MTD^PON^PMN^LH0,0^JMA^PR4,4~SD15^JUS^LRN^CI0^XZ"
+        'sZebraText += "^XA"
+        'sZebraText += "^MMT"
+        'sZebraText += "^PW831"
+        'sZebraText += "^LL0208"
+        'sZebraText += "^LS0"
+        'sZebraText += "^FT193,165^BQN,2,4"
+        'sZebraText += "^FH\^FDLA," & _pack & "|" & _produto & "|" & Trim(_pedido) & "|" & sVolume & "^FS"
+        'sZebraText += "^FT323,81^A0N,28,28^FH\^FD" & _pack & "|" & _produto & "|" & Trim(_pedido) & "|" & sVolume & "^FS"
+        'sZebraText += "^FT451,145^A0N,28,28^FH\^FDVolume: " & _volume & "/" & _qtde & "^FS"
+        'sZebraText += "^PQ1,0,1,Y^XZ"
+
+        Return sBody
     End Function
+
+    Private Sub NumericUpDown1_ValueChanged(sender As Object, e As EventArgs) Handles NumericUpDown1.ValueChanged
+        NumericUpDown2.Value = NumericUpDown1.Value
+    End Sub
+
+    Private Sub NumericUpDown2_ValueChanged(sender As Object, e As EventArgs) Handles NumericUpDown2.ValueChanged
+        NumericUpDown2.Minimum = NumericUpDown1.Value
+    End Sub
 
     Private Sub PrintNormalWMS()
         Dim dt As New DataTable

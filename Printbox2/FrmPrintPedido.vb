@@ -454,6 +454,7 @@ Public Class FrmPrintPedido
                 _qtde = CInt(row("qtde_total"))
 
                 If rbTodos.Checked Then
+                    i = 1
                     While i <= _qtde
                         sHeader = "CT~~CD,~CC^~CT~"
                         sHeader += "^XA~TA000~JSN^LT0^MNW^MTD^PON^PMN^LH0,0^JMA^PR4,4~SD15^JUS^LRN^CI0^XZ"
@@ -469,7 +470,7 @@ Public Class FrmPrintPedido
                             sZebraText += sBody(nn - 1)
                             i += 1
                             If i > _qtde Then
-                                Exit While
+                                Exit For
                             End If
                         Next
                         sFooter = "^PQ1,0,1,Y^XZ"
@@ -580,4 +581,12 @@ Public Class FrmPrintPedido
 
         Return sBody
     End Function
+
+    Private Sub NumericUpDown1_ValueChanged(sender As Object, e As EventArgs) Handles NumericUpDown1.ValueChanged
+        NumericUpDown2.Value = NumericUpDown1.Value
+    End Sub
+
+    Private Sub NumericUpDown2_ValueChanged(sender As Object, e As EventArgs) Handles NumericUpDown2.ValueChanged
+        NumericUpDown2.Minimum = NumericUpDown1.Value
+    End Sub
 End Class

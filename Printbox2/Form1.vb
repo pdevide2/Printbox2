@@ -29,7 +29,9 @@
     End Sub
 
     Private Sub ImprimirEtiquetasWMSImportadoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ImprimirEtiquetasWMSImportadoToolStripMenuItem.Click
-
+        Dim form = New FrmEtiquetaPDAImportado
+        form.MdiParent = Me
+        form.Show()
     End Sub
 
     Private Sub ImprimirEtiquetasDeCaixasEurekaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ImprimirEtiquetasDeCaixasEurekaToolStripMenuItem.Click

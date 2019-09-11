@@ -202,6 +202,7 @@ Partial Class FrmPrintPedido
         'NumericUpDown1
         '
         Me.NumericUpDown1.Location = New System.Drawing.Point(577, 497)
+        Me.NumericUpDown1.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.NumericUpDown1.Name = "NumericUpDown1"
         Me.NumericUpDown1.Size = New System.Drawing.Size(65, 20)
         Me.NumericUpDown1.TabIndex = 9
