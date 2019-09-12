@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FrmEtiquetaPDAImportado
     Inherits System.Windows.Forms.Form
 
     'Descartar substituições de formulário para limpar a lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class FrmEtiquetaPDAImportado
     'OBSERVAÇÃO: o procedimento a seguir é exigido pelo Windows Form Designer
     'Pode ser modificado usando o Windows Form Designer.  
     'Não o modifique usando o editor de códigos.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmEtiquetaPDAImportado))
         Me.Label1 = New System.Windows.Forms.Label()
@@ -33,7 +33,6 @@ Partial Class FrmEtiquetaPDAImportado
         Me.dg2 = New System.Windows.Forms.DataGridView()
         Me.btnMarcarProdutos = New System.Windows.Forms.Button()
         Me.lblMarcarProdutos = New System.Windows.Forms.Label()
-        Me.Button2 = New System.Windows.Forms.Button()
         CType(Me.dg, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dg2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -94,18 +93,19 @@ Partial Class FrmEtiquetaPDAImportado
         'lblTotalReg
         '
         Me.lblTotalReg.AutoSize = True
-        Me.lblTotalReg.Location = New System.Drawing.Point(780, 190)
+        Me.lblTotalReg.Location = New System.Drawing.Point(776, 190)
         Me.lblTotalReg.Name = "lblTotalReg"
         Me.lblTotalReg.Size = New System.Drawing.Size(50, 13)
         Me.lblTotalReg.TabIndex = 6
         Me.lblTotalReg.Text = "0 Linhas."
+        Me.lblTotalReg.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
         'dg2
         '
         Me.dg2.AllowUserToAddRows = False
         Me.dg2.AllowUserToDeleteRows = False
         Me.dg2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dg2.Location = New System.Drawing.Point(16, 38)
+        Me.dg2.Location = New System.Drawing.Point(25, 38)
         Me.dg2.Name = "dg2"
         Me.dg2.Size = New System.Drawing.Size(281, 129)
         Me.dg2.TabIndex = 7
@@ -125,28 +125,18 @@ Partial Class FrmEtiquetaPDAImportado
         Me.lblMarcarProdutos.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblMarcarProdutos.Image = CType(resources.GetObject("lblMarcarProdutos.Image"), System.Drawing.Image)
         Me.lblMarcarProdutos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lblMarcarProdutos.Location = New System.Drawing.Point(308, 38)
+        Me.lblMarcarProdutos.Location = New System.Drawing.Point(312, 75)
         Me.lblMarcarProdutos.Name = "lblMarcarProdutos"
-        Me.lblMarcarProdutos.Size = New System.Drawing.Size(482, 129)
+        Me.lblMarcarProdutos.Size = New System.Drawing.Size(378, 42)
         Me.lblMarcarProdutos.TabIndex = 9
         Me.lblMarcarProdutos.Text = "Selecionar todos itens com produtos marcados"
         Me.lblMarcarProdutos.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(428, 10)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 10
-        Me.Button2.Text = "Button2"
-        Me.Button2.UseVisualStyleBackColor = True
         '
         'FrmEtiquetaPDAImportado
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(842, 606)
-        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.lblMarcarProdutos)
         Me.Controls.Add(Me.btnMarcarProdutos)
         Me.Controls.Add(Me.dg2)
@@ -177,5 +167,4 @@ Partial Class FrmEtiquetaPDAImportado
     Friend WithEvents dg2 As DataGridView
     Friend WithEvents btnMarcarProdutos As Button
     Friend WithEvents lblMarcarProdutos As Label
-    Friend WithEvents Button2 As Button
 End Class

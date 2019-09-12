@@ -2,6 +2,8 @@
 
 Public Class FrmEtiquetaPDAImportado
 
+    Dim listaProdutos As New List(Of String)
+
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Pesquisar()
         PesquisarProdutos()
@@ -37,6 +39,9 @@ Public Class FrmEtiquetaPDAImportado
 
     End Sub
     Private Sub FormatarDG()
+        For i = 1 To 6
+            dg.Columns(i).ReadOnly = True
+        Next
         'dg.Columns(0).Visible = False
         'dg.Columns("pedido").HeaderText = "Pedido"
         'dg.Columns("caixa").HeaderText = "Caixa"
@@ -89,7 +94,7 @@ Public Class FrmEtiquetaPDAImportado
         Try
             abrir()
 
-            sql += " SELECT CAST(1 AS BIT) AS SELECAO, produto FROM ( "
+            sql += " SELECT CAST(1 AS BIT) AS Selecao, Produto FROM ( "
             sql += " SELECT CAST(1 AS BIT) AS SELECAO, PACK,PRODUTO,NF,SERIE,A.ID_COLETA ETIQUETA,B.STATUS "
             sql += " FROM  PDA_WMS_TB_RECEBIMENTO_IMPORTADO_COLETA A "
             sql += " INNER JOIN PDA_WMS_TB_REC_CD_STATUS_RECEBIMENTO B "
@@ -102,7 +107,7 @@ Public Class FrmEtiquetaPDAImportado
             da = New SqlDataAdapter(sql, conn)
             da.Fill(dt)
             dg2.DataSource = dt
-
+            dg2.Columns("produto").ReadOnly = True
             'ContarLinhas()
             'FormatarDG()
 
@@ -131,32 +136,45 @@ Public Class FrmEtiquetaPDAImportado
     End Sub
 
     Private Sub LblMarcarProdutos_Click(sender As Object, e As EventArgs) Handles lblMarcarProdutos.Click
+        Dim blnMarcado As Boolean = False
         For Each row As DataGridViewRow In dg.Rows
             row.Cells(0).Value = False
         Next
+        listaProdutos.Clear()
+
+        dg.CurrentCell = dg.Rows(0).Cells(1)
+
+
         For Each row As DataGridViewRow In dg2.Rows
-            If row.Cells(0).Value = True Then
-                MarcaProdutosSelecionados(row.Cells("produto").Value.ToString)
-                Exit Sub
+            blnMarcado = row.Cells("selecao").Value
+            If blnMarcado Then
+                listaProdutos.Add(row.Cells("produto").Value)
             End If
         Next
-    End Sub
-    Private Sub MarcaProdutosSelecionados(ByVal _produto As String)
-        'For Each row As DataGridViewRow In dg.Rows
-        '    If row.Cells("produto").Value.Equals(_produto) Then
-        '        row.Cells(0).Value = True
-        '    End If
+        'Dim msg As String = ""
+        'For Each s In listaProdutos
+        '    msg += s & Chr(13)
         'Next
-        Dim dt = TryCast(dg.DataSource, DataTable)
-
-        Dim resultado = From dados In dt.AsEnumerable()
-                        Where dados.Field(Of [String])("produto").Equals(_produto)
-                        Select dados
-        dg.DataSource = resultado.AsDataView().ToTable()
-
+        'MessageBox.Show(msg)
+        MarcaProdutosSelecionados()
+    End Sub
+    Private Sub MarcaProdutosSelecionados()
+        Dim blnAchou As Boolean = False
+        Dim i As Integer = 0
+        For Each row As DataGridViewRow In dg.Rows
+            blnAchou = listaProdutos.Contains(row.Cells("produto").Value)
+            row.Cells(0).Value = blnAchou
+            i += IIf(blnAchou, 1, 0)
+        Next
+        lblTotalReg.Text = i.ToString() & " Linhas"
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        MarcaProdutosSelecionados(dg2.CurrentRow.Cells("produto").Value)
+    Private Sub Dg2_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dg2.CellContentClick
+        'http://www.vbforums.com/showthread.php?827863-Datagridview-Checkbox-Cell-won-t-check
+        If e.ColumnIndex = 0 Then
+            Dim cboSelected As DataGridViewCheckBoxCell = CType(dg2.Rows(e.RowIndex).Cells(0), DataGridViewCheckBoxCell)
+            dg2.EndEdit()
+            'MessageBox.Show(cboSelected.Value)
+        End If
     End Sub
 End Class
