@@ -33,6 +33,9 @@ Partial Class FrmEtiquetaPDAImportado
         Me.dg2 = New System.Windows.Forms.DataGridView()
         Me.btnMarcarProdutos = New System.Windows.Forms.Button()
         Me.lblMarcarProdutos = New System.Windows.Forms.Label()
+        Me.btnVolumeQRCodeReduzido = New System.Windows.Forms.Button()
+        Me.btnVolumeQRCode = New System.Windows.Forms.Button()
+        Me.btnSair = New System.Windows.Forms.Button()
         CType(Me.dg, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dg2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -55,7 +58,7 @@ Partial Class FrmEtiquetaPDAImportado
         '
         'txtSerie
         '
-        Me.txtSerie.Location = New System.Drawing.Point(250, 12)
+        Me.txtSerie.Location = New System.Drawing.Point(259, 11)
         Me.txtSerie.Name = "txtSerie"
         Me.txtSerie.Size = New System.Drawing.Size(47, 20)
         Me.txtSerie.TabIndex = 3
@@ -63,7 +66,7 @@ Partial Class FrmEtiquetaPDAImportado
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(213, 16)
+        Me.Label2.Location = New System.Drawing.Point(223, 16)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(31, 13)
         Me.Label2.TabIndex = 2
@@ -132,11 +135,47 @@ Partial Class FrmEtiquetaPDAImportado
         Me.lblMarcarProdutos.Text = "Selecionar todos itens com produtos marcados"
         Me.lblMarcarProdutos.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
+        'btnVolumeQRCodeReduzido
+        '
+        Me.btnVolumeQRCodeReduzido.Image = CType(resources.GetObject("btnVolumeQRCodeReduzido.Image"), System.Drawing.Image)
+        Me.btnVolumeQRCodeReduzido.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnVolumeQRCodeReduzido.Location = New System.Drawing.Point(293, 548)
+        Me.btnVolumeQRCodeReduzido.Name = "btnVolumeQRCodeReduzido"
+        Me.btnVolumeQRCodeReduzido.Size = New System.Drawing.Size(175, 47)
+        Me.btnVolumeQRCodeReduzido.TabIndex = 22
+        Me.btnVolumeQRCodeReduzido.Text = "QR Code (3 colunas)"
+        Me.btnVolumeQRCodeReduzido.UseVisualStyleBackColor = True
+        '
+        'btnVolumeQRCode
+        '
+        Me.btnVolumeQRCode.Image = CType(resources.GetObject("btnVolumeQRCode.Image"), System.Drawing.Image)
+        Me.btnVolumeQRCode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnVolumeQRCode.Location = New System.Drawing.Point(474, 548)
+        Me.btnVolumeQRCode.Name = "btnVolumeQRCode"
+        Me.btnVolumeQRCode.Size = New System.Drawing.Size(175, 47)
+        Me.btnVolumeQRCode.TabIndex = 21
+        Me.btnVolumeQRCode.Text = "QR Code (1 coluna)"
+        Me.btnVolumeQRCode.UseVisualStyleBackColor = True
+        '
+        'btnSair
+        '
+        Me.btnSair.Image = CType(resources.GetObject("btnSair.Image"), System.Drawing.Image)
+        Me.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnSair.Location = New System.Drawing.Point(655, 548)
+        Me.btnSair.Name = "btnSair"
+        Me.btnSair.Size = New System.Drawing.Size(175, 47)
+        Me.btnSair.TabIndex = 20
+        Me.btnSair.Text = "Fechar"
+        Me.btnSair.UseVisualStyleBackColor = True
+        '
         'FrmEtiquetaPDAImportado
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(842, 606)
+        Me.Controls.Add(Me.btnVolumeQRCodeReduzido)
+        Me.Controls.Add(Me.btnVolumeQRCode)
+        Me.Controls.Add(Me.btnSair)
         Me.Controls.Add(Me.lblMarcarProdutos)
         Me.Controls.Add(Me.btnMarcarProdutos)
         Me.Controls.Add(Me.dg2)
@@ -149,7 +188,7 @@ Partial Class FrmEtiquetaPDAImportado
         Me.Controls.Add(Me.Label1)
         Me.Name = "FrmEtiquetaPDAImportado"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "FrmEtiquetaPDAImportado"
+        Me.Text = "Etiquetas - Caixa Mãe - WMS Importados"
         CType(Me.dg, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dg2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -167,4 +206,7 @@ Partial Class FrmEtiquetaPDAImportado
     Friend WithEvents dg2 As DataGridView
     Friend WithEvents btnMarcarProdutos As Button
     Friend WithEvents lblMarcarProdutos As Label
+    Friend WithEvents btnVolumeQRCodeReduzido As Button
+    Friend WithEvents btnVolumeQRCode As Button
+    Friend WithEvents btnSair As Button
 End Class

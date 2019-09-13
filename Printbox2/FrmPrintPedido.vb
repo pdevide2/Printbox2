@@ -31,6 +31,7 @@ Public Class FrmPrintPedido
         End Try
     End Sub
     Private Sub FormatarDG()
+        Dim i As Integer
         'dg.Columns(0).Visible = False
         dg.Columns("pedido").HeaderText = "Pedido"
         dg.Columns("caixa").HeaderText = "Caixa"
@@ -224,7 +225,7 @@ Public Class FrmPrintPedido
         Dim dt As New DataTable
         Dim da As SqlDataAdapter
         Dim sql As String
-
+        Dim i As Integer
         Try
             abrir()
             sql = " select	(select top 1 packs "
@@ -285,7 +286,7 @@ Public Class FrmPrintPedido
         Dim dt As New DataTable
         Dim da As SqlDataAdapter
         Dim sql As String
-
+        Dim i As Integer
         Try
             abrir()
             sql = " select	(select top 1 packs "
@@ -465,6 +466,7 @@ Public Class FrmPrintPedido
                         sHeader += "^LS0"
                         'Reseta a variavel que acumula os conteudos do corpo da etiqueta
                         sZebraText = ""
+                        Dim nn As Integer
                         For nn = 1 To 3
                             sBody(nn - 1) = GeraTextoVolumeQRCodeReduzido(nn, _pedido, _produto, _pack, i, _qtde)
                             sZebraText += sBody(nn - 1)
@@ -492,6 +494,7 @@ Public Class FrmPrintPedido
                         sHeader += "^LS0"
                         'Reseta a variavel que acumula os conteudos do corpo da etiqueta
                         sZebraText = ""
+                        Dim nn As Integer
                         For nn = 1 To 3
                             sBody(nn - 1) = GeraTextoVolumeQRCodeReduzido(nn, _pedido, _produto, _pack, i, _qtde)
                             sZebraText += sBody(nn - 1)

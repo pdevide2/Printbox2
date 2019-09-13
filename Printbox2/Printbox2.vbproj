@@ -45,7 +45,7 @@
     <OptionStrict>Off</OptionStrict>
   </PropertyGroup>
   <PropertyGroup>
-    <OptionInfer>On</OptionInfer>
+    <OptionInfer>Off</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
@@ -85,6 +85,7 @@
     <Compile Include="DemoPrint.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="EtiquetasWMSImportado.vb" />
     <Compile Include="FilialInfo.vb" />
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>

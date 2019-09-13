@@ -7,6 +7,7 @@
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim i As Integer
         For i = 1 To NumericUpDown1.Value
 
             Dim strTextoZebra As String
