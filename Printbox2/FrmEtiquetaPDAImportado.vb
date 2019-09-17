@@ -136,13 +136,17 @@ Public Class FrmEtiquetaPDAImportado
             For Each row As DataGridViewRow In dg2.Rows
                 row.Cells(0).Value = False
             Next
-
+            For Each row As DataGridViewRow In dg.Rows
+                row.Cells(0).Value = False
+            Next
             btnMarcarProdutos.Text = "Marcar Tudo"
         Else
             For Each row As DataGridViewRow In dg2.Rows
                 row.Cells(0).Value = True
             Next
-
+            For Each row As DataGridViewRow In dg.Rows
+                row.Cells(0).Value = True
+            Next
             btnMarcarProdutos.Text = "Desmarcar Tudo"
         End If
     End Sub
@@ -196,7 +200,7 @@ Public Class FrmEtiquetaPDAImportado
     End Sub
 
     Private Sub BtnVolumeQRCode_Click(sender As Object, e As EventArgs) Handles btnVolumeQRCode.Click
-        'PrintQRCode3Colunas()
+        PrintQRCode1Coluna()
     End Sub
 
     Private Sub PrintQRCode3Colunas()
@@ -307,4 +311,53 @@ Public Class FrmEtiquetaPDAImportado
     Private Sub BtnVolumeQRCodeReduzido_Click(sender As Object, e As EventArgs) Handles btnVolumeQRCodeReduzido.Click
         PrintQRCode3Colunas()
     End Sub
+
+    Private Sub PrintQRCode1Coluna()
+
+        Dim sZebraText As String = ""
+
+
+        Try
+            Dim lista = EtiquetasWMSImportado.GetEtiquetas(dg)
+
+            sZebraText = ""
+
+            For Each p As EtiquetasWMSImportado In lista
+
+                sZebraText = GeraTextoVolumeQRCode1Coluna(p.Nfe_num, p.NfeSerie, p.Produto, p.Pack, p.EtiquetaNum)
+                ImprimeZebraZT230(sZebraText)
+
+            Next
+
+        Catch ex As Exception
+            MessageBox.Show("Erro ao Imprimir " + ex.Message)
+        End Try
+
+    End Sub
+    Private Function GeraTextoVolumeQRCode1Coluna(ByVal _nf As String, ByVal _serie As String,
+                                            ByVal _produto As String, ByVal _pack As String, ByVal _etiqueta As Integer) As String
+        Dim sZebraText As String
+
+
+        sZebraText = "CT~~CD,~CC^~CT~"
+        sZebraText += "^XA~TA000~JSN^LT0^MNW^MTD^PON^PMN^LH0,0^JMA^PR4,4~SD15^JUS^LRN^CI0^XZ"
+        sZebraText += "^XA"
+        sZebraText += "^MMT"
+        sZebraText += "^PW831"
+        sZebraText += "^LL0208"
+        sZebraText += "^LS0"
+        sZebraText += "^FT521,143^A0N,28,28^FH\^FDEtiqueta: " & _etiqueta & "^FS"
+        sZebraText += "^FT396,143^A0N,28,28^FH\^FDSerie: " & _serie & "^FS"
+        sZebraText += "^FT206,78^A0N,28,28^FH\^FDPack: " & _pack & "^FS"
+        sZebraText += "^FT318,78^A0N,28,28^FH\^FDProduto: " & _produto & "^FS"
+        sZebraText += "^FT203,143^A0N,28,28^FH\^FDNF: " & _nf & "^FS"
+        sZebraText += "^FT51,187^BQN,2,5"
+        sZebraText += "^FH\^FDLA," & Trim(_pack) & "|" & Trim(_produto) & "|" & Trim(_nf) & "|" & Trim(_serie) & "|" & _etiqueta & "^FS"
+        sZebraText += "^PQ1,0,1,Y^XZ"
+
+
+        Return sZebraText
+
+    End Function
+
 End Class
