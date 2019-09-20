@@ -1,6 +1,17 @@
-﻿Imports System.IO
+﻿Imports System.Data.SqlClient
+Imports System.IO
 Imports System.Text.Encoding
 Module Funcoes
+
+    Public Enum Operacao
+        Consulta = 0
+        Novo = 1
+        Edicao = 2
+        Exclusao = 3
+    End Enum
+
+    Public usuarioNome As String = ""
+
     'Diretorio do executavel C:\WORKSPACE\Printbox2\Printbox2\bin\Debug
     'Retorna: C:\WORKSPACE\Printbox2\
     Public dirhome As String = Application.StartupPath.Replace("Printbox2\bin\Debug", "")
@@ -48,8 +59,13 @@ Module Funcoes
     End Function
 
     Public Sub ImprimeZebraZT230(ByVal strTextoZebra)
-        Dim ipAddress As String = "172.16.16.250"
+        Dim ipAddress As String = EnderecoImpressora() '"172.16.16.250"
         Dim port As Integer = 6101
+
+        If String.IsNullOrEmpty(ipAddress) Then
+            MessageBox.Show("Impressora Padrão não definida!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
 
         Try
             Dim client As System.Net.Sockets.TcpClient = New Net.Sockets.TcpClient()
@@ -69,5 +85,18 @@ Module Funcoes
 
         End Try
     End Sub
+    Public Function EnderecoImpressora() As String
+        Dim sAddress As String = ""
+        Try
+            Dim dt = SqliteExecuteDataTable("select PRINTER_IP from CONFIG_PRINTER where IS_DEFAULT = 1")
 
+            If dt.Rows.Count > 0 Then
+                sAddress = dt.Rows(0)("PRINTER_IP").ToString
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show("Erro ao Listar " + ex.Message)
+        End Try
+        Return sAddress
+    End Function
 End Module

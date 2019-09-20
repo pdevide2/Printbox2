@@ -27,14 +27,14 @@ Partial Class FrmPrincipal
         Me.ArquivoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ImprimirEtiquetasDeCaixasDoPedidoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ImprimirEtiquetasDeCaixasWMSToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ConfigurarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SairToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SairToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
         Me.ImprimirEtiquetasWMSImportadoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripSeparator()
         Me.ImprimirEtiquetasDeCaixasEurekaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ConfigurarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ConfigurarIPToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SairToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SairToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -70,28 +70,6 @@ Partial Class FrmPrincipal
         Me.ImprimirEtiquetasDeCaixasWMSToolStripMenuItem.Size = New System.Drawing.Size(297, 38)
         Me.ImprimirEtiquetasDeCaixasWMSToolStripMenuItem.Text = "Imprimir Etiquetas de Caixas WMS"
         '
-        'ConfigurarToolStripMenuItem
-        '
-        Me.ConfigurarToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConfigurarIPToolStripMenuItem})
-        Me.ConfigurarToolStripMenuItem.Name = "ConfigurarToolStripMenuItem"
-        Me.ConfigurarToolStripMenuItem.Size = New System.Drawing.Size(76, 20)
-        Me.ConfigurarToolStripMenuItem.Text = "Configurar"
-        '
-        'SairToolStripMenuItem
-        '
-        Me.SairToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SairToolStripMenuItem1})
-        Me.SairToolStripMenuItem.Name = "SairToolStripMenuItem"
-        Me.SairToolStripMenuItem.Size = New System.Drawing.Size(38, 20)
-        Me.SairToolStripMenuItem.Text = "Sair"
-        '
-        'SairToolStripMenuItem1
-        '
-        Me.SairToolStripMenuItem1.Image = CType(resources.GetObject("SairToolStripMenuItem1.Image"), System.Drawing.Image)
-        Me.SairToolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.SairToolStripMenuItem1.Name = "SairToolStripMenuItem1"
-        Me.SairToolStripMenuItem1.Size = New System.Drawing.Size(109, 38)
-        Me.SairToolStripMenuItem1.Text = "Sair"
-        '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
@@ -118,6 +96,13 @@ Partial Class FrmPrincipal
         Me.ImprimirEtiquetasDeCaixasEurekaToolStripMenuItem.Size = New System.Drawing.Size(297, 38)
         Me.ImprimirEtiquetasDeCaixasEurekaToolStripMenuItem.Text = "Imprimir Etiquetas de Caixas Eureka"
         '
+        'ConfigurarToolStripMenuItem
+        '
+        Me.ConfigurarToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConfigurarIPToolStripMenuItem})
+        Me.ConfigurarToolStripMenuItem.Name = "ConfigurarToolStripMenuItem"
+        Me.ConfigurarToolStripMenuItem.Size = New System.Drawing.Size(76, 20)
+        Me.ConfigurarToolStripMenuItem.Text = "Configurar"
+        '
         'ConfigurarIPToolStripMenuItem
         '
         Me.ConfigurarIPToolStripMenuItem.Image = CType(resources.GetObject("ConfigurarIPToolStripMenuItem.Image"), System.Drawing.Image)
@@ -125,6 +110,21 @@ Partial Class FrmPrincipal
         Me.ConfigurarIPToolStripMenuItem.Name = "ConfigurarIPToolStripMenuItem"
         Me.ConfigurarIPToolStripMenuItem.Size = New System.Drawing.Size(196, 38)
         Me.ConfigurarIPToolStripMenuItem.Text = "Configurar IP"
+        '
+        'SairToolStripMenuItem
+        '
+        Me.SairToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SairToolStripMenuItem1})
+        Me.SairToolStripMenuItem.Name = "SairToolStripMenuItem"
+        Me.SairToolStripMenuItem.Size = New System.Drawing.Size(38, 20)
+        Me.SairToolStripMenuItem.Text = "Sair"
+        '
+        'SairToolStripMenuItem1
+        '
+        Me.SairToolStripMenuItem1.Image = CType(resources.GetObject("SairToolStripMenuItem1.Image"), System.Drawing.Image)
+        Me.SairToolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.SairToolStripMenuItem1.Name = "SairToolStripMenuItem1"
+        Me.SairToolStripMenuItem1.Size = New System.Drawing.Size(109, 38)
+        Me.SairToolStripMenuItem1.Text = "Sair"
         '
         'FrmPrincipal
         '

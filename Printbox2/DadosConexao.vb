@@ -46,27 +46,27 @@
     End Property
 
     Private Sub PreencherDados()
-        Dim strConexao = BuscaConexaoTXT("db_printbar_conn.txt")
+        'Dim strConexao = BuscaConexaoTXT("db_printbar_conn.txt")
 
-        Dim intservidor = strConexao.IndexOf("Server=")
-        Dim intdriver = strConexao.IndexOf("driver=") - 1
-        Dim intdatabase = strConexao.IndexOf("DATABASE=")
-        Dim intLenght = 100
-        Dim servidor = strConexao.Substring(intservidor, intdriver)
+        'Dim intservidor = strConexao.IndexOf("Server=")
+        'Dim intdriver = strConexao.IndexOf("driver=") - 1
+        'Dim intdatabase = strConexao.IndexOf("DATABASE=")
+        'Dim intLenght = 100
+        'Dim servidor = strConexao.Substring(intservidor, intdriver)
 
-        Dim dadosServer As String() = servidor.Split("=")
-        Me.Server = Trim(dadosServer(1))
+        'Dim dadosServer As String() = servidor.Split("=")
+        'Me.Server = Trim(dadosServer(1))
 
-        Dim dados = strConexao.Substring(intdatabase, intLenght)
-        Dim dados2 As String() = dados.Split(";")
+        'Dim dados = strConexao.Substring(intdatabase, intLenght)
+        'Dim dados2 As String() = dados.Split(";")
 
-        Dim dadosDatabase As String() = dados2(0).Split("=")
-        Dim dadosUsuario As String() = dados2(1).Split("=")
-        Dim dadosSenha As String() = dados2(2).Split("=")
-
-        Me.Database = Trim(dadosDatabase(1))
-        Me.Usuario = Trim(dadosUsuario(1))
-        Me.Senha = Trim(dadosSenha(1)).Replace(vbNullChar, "")
+        'Dim dadosDatabase As String() = dados2(0).Split("=")
+        'Dim dadosUsuario As String() = dados2(1).Split("=")
+        'Dim dadosSenha As String() = dados2(2).Split("=")
+        Me.Server = "dblinx.caedu.com.br"
+        Me.Database = "CAEDU"
+        Me.Usuario = "PRINTBAR_USER"
+        Me.Senha = "#C@edu$7890@"
 
 
     End Sub

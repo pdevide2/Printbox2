@@ -37,4 +37,10 @@
     Private Sub ImprimirEtiquetasDeCaixasEurekaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ImprimirEtiquetasDeCaixasEurekaToolStripMenuItem.Click
 
     End Sub
+
+    Private Sub ConfigurarIPToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConfigurarIPToolStripMenuItem.Click
+        Dim form = New ConfiguraImpressoras
+        form.MdiParent = Me
+        form.Show()
+    End Sub
 End Class
