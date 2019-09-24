@@ -99,4 +99,21 @@ Module Funcoes
         End Try
         Return sAddress
     End Function
+
+    Public Sub PersisteAmbiente(ByVal p_valor1 As Integer, p_valor2 As Integer)
+        My.Settings.AMBIENTE = p_valor1
+        My.Settings.HOMOLOG = p_valor2
+        My.Settings.Save()
+    End Sub
+
+    Public Function GetAmbiente(ByVal _valor As String) As Integer
+        Dim ret As Integer = 0
+        If Trim(_valor).ToUpper.Equals("AMBIENTE") Then
+            ret = My.Settings.AMBIENTE
+        End If
+        If Trim(_valor).ToUpper.Equals("HOMOLOG") Then
+            ret = My.Settings.HOMOLOG
+        End If
+        Return ret
+    End Function
 End Module

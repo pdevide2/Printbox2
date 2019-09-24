@@ -30,7 +30,7 @@
     <ProductName>Printbox2.0</ProductName>
     <PublisherName>Paulo Eduardo Devide</PublisherName>
     <SuiteName>Printbox2.0</SuiteName>
-    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationRevision>7</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -129,6 +129,12 @@
   <ItemGroup>
     <Compile Include="CaixaInfo.vb" />
     <Compile Include="Conexao.vb" />
+    <Compile Include="ConfigSQLConn.Designer.vb">
+      <DependentUpon>ConfigSQLConn.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigSQLConn.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ConfiguraImpressoras.Designer.vb">
       <DependentUpon>ConfiguraImpressoras.vb</DependentUpon>
     </Compile>
@@ -155,6 +161,12 @@
       <DependentUpon>FrmEtiquetaPDAImportado.vb</DependentUpon>
     </Compile>
     <Compile Include="FrmEtiquetaPDAImportado.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrintEureka.designer.vb">
+      <DependentUpon>FrmPrintEureka.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPrintEureka.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmPrintPedido.Designer.vb">
@@ -195,6 +207,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ConfigSQLConn.resx">
+      <DependentUpon>ConfigSQLConn.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConfiguraImpressoras.resx">
       <DependentUpon>ConfiguraImpressoras.vb</DependentUpon>
     </EmbeddedResource>
@@ -206,6 +221,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmEtiquetaPDAImportado.resx">
       <DependentUpon>FrmEtiquetaPDAImportado.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrintEureka.resx">
+      <DependentUpon>FrmPrintEureka.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPrintPedido.resx">
       <DependentUpon>FrmPrintPedido.vb</DependentUpon>
@@ -224,6 +242,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="DADOS\dbPrintbox2.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -253,7 +274,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DADOS\" />
+    <Folder Include="Documentos\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="x64\SQLite.Interop.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\SQLite.Interop.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.111.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.111.0\build\net46\System.Data.SQLite.Core.targets')" />

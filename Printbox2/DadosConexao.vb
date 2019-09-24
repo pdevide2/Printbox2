@@ -1,4 +1,5 @@
-﻿Public Class DadosConexao
+﻿Imports System.Data.SqlClient
+Public Class DadosConexao
     Private _server As String
     Public Property Server() As String
         Get
@@ -46,27 +47,28 @@
     End Property
 
     Private Sub PreencherDados()
-        'Dim strConexao = BuscaConexaoTXT("db_printbar_conn.txt")
 
-        'Dim intservidor = strConexao.IndexOf("Server=")
-        'Dim intdriver = strConexao.IndexOf("driver=") - 1
-        'Dim intdatabase = strConexao.IndexOf("DATABASE=")
-        'Dim intLenght = 100
-        'Dim servidor = strConexao.Substring(intservidor, intdriver)
+        Dim _id_ambiente As Integer = GetAmbiente("AMBIENTE")
+        Dim _id_homolog As Integer = GetAmbiente("HOMOLOG")
 
-        'Dim dadosServer As String() = servidor.Split("=")
-        'Me.Server = Trim(dadosServer(1))
-
-        'Dim dados = strConexao.Substring(intdatabase, intLenght)
-        'Dim dados2 As String() = dados.Split(";")
-
-        'Dim dadosDatabase As String() = dados2(0).Split("=")
-        'Dim dadosUsuario As String() = dados2(1).Split("=")
-        'Dim dadosSenha As String() = dados2(2).Split("=")
-        Me.Server = "dblinx.caedu.com.br"
-        Me.Database = "CAEDU"
-        Me.Usuario = "PRINTBAR_USER"
-        Me.Senha = "#C@edu$7890@"
+        If _id_ambiente = 1 Then
+            Me.Server = "dblinx.caedu.com.br"
+            Me.Database = "CAEDU"
+            Me.Usuario = "PRINTBAR_USER"
+            Me.Senha = "#C@edu$7890@"
+        Else
+            If _id_homolog = 1 Then
+                Me.Server = "172.16.25.15\SPK"
+                Me.Database = "CAEDU"
+                Me.Usuario = "PRINTBAR_USER"
+                Me.Senha = "#C@edu$7890@"
+            Else
+                Me.Server = "172.16.25.15\LINX"
+                Me.Database = "CAEDU"
+                Me.Usuario = "diariodebordo"
+                Me.Senha = "c102030@"
+            End If
+        End If
 
 
     End Sub

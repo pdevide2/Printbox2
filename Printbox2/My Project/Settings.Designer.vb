@@ -64,6 +64,30 @@ Namespace My
                 Return CType(Me("Printbox2ConnectionString"),String)
             End Get
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("1")>  _
+        Public Property AMBIENTE() As Integer
+            Get
+                Return CType(Me("AMBIENTE"),Integer)
+            End Get
+            Set
+                Me("AMBIENTE") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("1")>  _
+        Public Property HOMOLOG() As Integer
+            Get
+                Return CType(Me("HOMOLOG"),Integer)
+            End Get
+            Set
+                Me("HOMOLOG") = value
+            End Set
+        End Property
     End Class
 End Namespace
 
