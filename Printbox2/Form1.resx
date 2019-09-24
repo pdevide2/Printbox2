@@ -311,10 +311,29 @@
   </data>
   <data name="ConfigurarAmbienteToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAACRSURBVFhH7Y7BDoAwCEP3/z+tHiRZGLXd2GEmvOQdZrHQiuIkLlEjymYciIYijSibcQAGLyxX
-        gT1sActVYI8FzCywp1/yZRbY4wP2XgX2+IC9V4E9bAHLVWAPW8ByFdhjATML7OmXfJlF7tm10FMH/PcA
-        e++S4gf7n3dIkQcfZmZljj3Avqsugwr6csWiOJnWbvGp6xUUXt63AAAAAElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAJFJREFUWEft
+        jsEOgDAIQ/f/P60eJFkYtd3YYSa85B1msdCK4iQuUSPKZhyIhiKNKJtxAAYvLFeBPWwBy1VgjwXMLLCn
+        X/JlFtjjA/ZeBfb4gL1XgT1sActVYA9bwHIV2GMBMwvs6Zd8mUXu2bXQUwf89wB775LiB/ufd0iRBx9m
+        ZmWOPcC+qy6DCvpyxaI4mdZu8anrFRRe3rcAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="ConfigurarSaídaDaImpressoraToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAB3RJ
+        TUUH4wkYESIJBzPpTgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAKOSURBVFhH
+        7ZdLyE5BGMePJESunygsWLCwt5Ci7CwpVoqIHWLFgtjZuBZZ+SyUHSIbyYIsxEIpl8gtUu65X8LvN87U
+        ed93zpzD8uv916/e55k5c54zM+/zzBSllsNn+F3hG6yFtpoNh+AefIVXcBFWw3DI6hj40mfwAJ6W9llo
+        ow1gwD7zE57Dh9KWazAdajUIdlwUrKKYB9rngpXXGrDvF9gGA6CGwUK4DLbfhnGQ1P8GMA0+gl+/WEdC
+        I+A0ON5+Hd3aDE6ZHa7DBbha2i9hB9RpJ9hvT7DqNRnegbM0VkdV38FBcoyHlK6A7XODlddxsO/SYFWk
+        003nLu7mJtg+BVJ6CG66xl2O3B+OtT5YFel0oJTcvbkAXDr/cm20BRxrY7Aq6gfQD2DIB2C2PAomNcd6
+        AWbECRD0Cx79/dkjM6MPxfzeraYAZkIsbCa8x2De0L4LEyFUvx/Qne1GgulTLCwpNQVwEnyZ1XaMDuRL
+        T4H+AzoOlobOEBEyX8fUeUJHjXIBGPR7eAN+TFVOvx/tx4eX3gFf5vQ4TTZqP4EZUKdcAC6bY7iMKbns
+        Ln+Q078PPJD40Gs4AlMhp1wAblzHciOn5Ma3vUOrQOfuYDWrH0A/gKEXwArQ2XTIjPLvarJJKQbgsS51
+        3IspukMLQOeZYOVlkbHvrWD1ytxiew6P8x3yDP8WPD7nMqDaDg6yN1hpeaSPVdCjvkf+WOBcvp7SrHaB
+        HbzXjdKR0HzwLun6z9KRkZcbx/Oyo7z8aHsZSmo0xChvwBKIx+5JsBW8Ddm+CZr0zwEoC8klsKN8Aqcs
+        1nJruyecNvKC6zNuOqtfrDeW6KwspyvhPHiKccPch8MwB9pqHcSbc8TlW1YURfEHSDMutWVXUY4AAAAA
+        SUVORK5CYII=
 </value>
   </data>
   <data name="SairToolStripMenuItem1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

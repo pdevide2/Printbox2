@@ -16,5 +16,11 @@
     <Setting Name="HOMOLOG" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
+    <Setting Name="OUTPUT_PRINTER" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="SHARED_NAME" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ZT230</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

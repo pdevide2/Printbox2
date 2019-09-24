@@ -51,4 +51,10 @@
         form.MdiParent = Me
         form.Show()
     End Sub
+
+    Private Sub ConfigurarSaídaDaImpressoraToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConfigurarSaídaDaImpressoraToolStripMenuItem.Click
+        Dim form = New ConfigOutput
+        form.MdiParent = Me
+        form.Show()
+    End Sub
 End Class

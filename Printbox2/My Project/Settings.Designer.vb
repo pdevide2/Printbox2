@@ -88,6 +88,30 @@ Namespace My
                 Me("HOMOLOG") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("1")>  _
+        Public Property OUTPUT_PRINTER() As Integer
+            Get
+                Return CType(Me("OUTPUT_PRINTER"),Integer)
+            End Get
+            Set
+                Me("OUTPUT_PRINTER") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("ZT230")>  _
+        Public Property SHARED_NAME() As String
+            Get
+                Return CType(Me("SHARED_NAME"),String)
+            End Get
+            Set
+                Me("SHARED_NAME") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

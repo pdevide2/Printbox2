@@ -33,10 +33,12 @@ Partial Class FrmPrincipal
         Me.ImprimirEtiquetasDeCaixasEurekaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ConfigurarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ConfigurarIPToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SairToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SairToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripSeparator()
         Me.ConfigurarAmbienteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SairToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SairToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ConfigurarSaídaDaImpressoraToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -100,7 +102,7 @@ Partial Class FrmPrincipal
         '
         'ConfigurarToolStripMenuItem
         '
-        Me.ConfigurarToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConfigurarIPToolStripMenuItem, Me.ToolStripMenuItem3, Me.ConfigurarAmbienteToolStripMenuItem})
+        Me.ConfigurarToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConfigurarIPToolStripMenuItem, Me.ToolStripMenuItem3, Me.ConfigurarAmbienteToolStripMenuItem, Me.ToolStripMenuItem4, Me.ConfigurarSaídaDaImpressoraToolStripMenuItem})
         Me.ConfigurarToolStripMenuItem.Name = "ConfigurarToolStripMenuItem"
         Me.ConfigurarToolStripMenuItem.Size = New System.Drawing.Size(76, 20)
         Me.ConfigurarToolStripMenuItem.Text = "Configurar"
@@ -110,8 +112,21 @@ Partial Class FrmPrincipal
         Me.ConfigurarIPToolStripMenuItem.Image = CType(resources.GetObject("ConfigurarIPToolStripMenuItem.Image"), System.Drawing.Image)
         Me.ConfigurarIPToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ConfigurarIPToolStripMenuItem.Name = "ConfigurarIPToolStripMenuItem"
-        Me.ConfigurarIPToolStripMenuItem.Size = New System.Drawing.Size(202, 38)
+        Me.ConfigurarIPToolStripMenuItem.Size = New System.Drawing.Size(255, 38)
         Me.ConfigurarIPToolStripMenuItem.Text = "Configurar IP"
+        '
+        'ToolStripMenuItem3
+        '
+        Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(252, 6)
+        '
+        'ConfigurarAmbienteToolStripMenuItem
+        '
+        Me.ConfigurarAmbienteToolStripMenuItem.Image = CType(resources.GetObject("ConfigurarAmbienteToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.ConfigurarAmbienteToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ConfigurarAmbienteToolStripMenuItem.Name = "ConfigurarAmbienteToolStripMenuItem"
+        Me.ConfigurarAmbienteToolStripMenuItem.Size = New System.Drawing.Size(255, 38)
+        Me.ConfigurarAmbienteToolStripMenuItem.Text = "Configurar Ambiente"
         '
         'SairToolStripMenuItem
         '
@@ -128,18 +143,18 @@ Partial Class FrmPrincipal
         Me.SairToolStripMenuItem1.Size = New System.Drawing.Size(109, 38)
         Me.SairToolStripMenuItem1.Text = "Sair"
         '
-        'ToolStripMenuItem3
+        'ToolStripMenuItem4
         '
-        Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
-        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(199, 6)
+        Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
+        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(252, 6)
         '
-        'ConfigurarAmbienteToolStripMenuItem
+        'ConfigurarSaídaDaImpressoraToolStripMenuItem
         '
-        Me.ConfigurarAmbienteToolStripMenuItem.Image = CType(resources.GetObject("ConfigurarAmbienteToolStripMenuItem.Image"), System.Drawing.Image)
-        Me.ConfigurarAmbienteToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.ConfigurarAmbienteToolStripMenuItem.Name = "ConfigurarAmbienteToolStripMenuItem"
-        Me.ConfigurarAmbienteToolStripMenuItem.Size = New System.Drawing.Size(202, 38)
-        Me.ConfigurarAmbienteToolStripMenuItem.Text = "Configurar Ambiente"
+        Me.ConfigurarSaídaDaImpressoraToolStripMenuItem.Image = CType(resources.GetObject("ConfigurarSaídaDaImpressoraToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.ConfigurarSaídaDaImpressoraToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ConfigurarSaídaDaImpressoraToolStripMenuItem.Name = "ConfigurarSaídaDaImpressoraToolStripMenuItem"
+        Me.ConfigurarSaídaDaImpressoraToolStripMenuItem.Size = New System.Drawing.Size(255, 38)
+        Me.ConfigurarSaídaDaImpressoraToolStripMenuItem.Text = "Configurar Saída da Impressora"
         '
         'FrmPrincipal
         '
@@ -177,4 +192,6 @@ Partial Class FrmPrincipal
     Friend WithEvents ConfigurarIPToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem3 As ToolStripSeparator
     Friend WithEvents ConfigurarAmbienteToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem4 As ToolStripSeparator
+    Friend WithEvents ConfigurarSaídaDaImpressoraToolStripMenuItem As ToolStripMenuItem
 End Class

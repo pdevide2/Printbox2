@@ -59,31 +59,37 @@ Module Funcoes
     End Function
 
     Public Sub ImprimeZebraZT230(ByVal strTextoZebra)
-        Dim ipAddress As String = EnderecoImpressora() '"172.16.16.250"
-        Dim port As Integer = 6101
+        If My.Settings.OUTPUT_PRINTER.Equals(1) Then 'Imprime para IP de rede
 
-        If String.IsNullOrEmpty(ipAddress) Then
-            MessageBox.Show("Impressora Padrão não definida!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Exit Sub
+            Dim ipAddress As String = EnderecoImpressora() '"172.16.16.250"
+            Dim port As Integer = 6101
+
+            If String.IsNullOrEmpty(ipAddress) Then
+                MessageBox.Show("Impressora Padrão não definida!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End If
+
+            Try
+                Dim client As System.Net.Sockets.TcpClient = New Net.Sockets.TcpClient()
+                client.Connect(ipAddress, port)
+                'client.Connect(ipAddress,)
+
+                Dim writer As System.IO.StreamWriter = New System.IO.StreamWriter(client.GetStream())
+                writer.Write(strTextoZebra)
+                writer.Flush()
+
+                'Fechando a conexao
+                writer.Close()
+                client.Close()
+
+
+            Catch ex As Exception
+                MessageBox.Show("Erro ao Listar " + ex.Message)
+            End Try
+        Else 'Imprime para compartilhamento LOCAL - exemplo \\localhost\ZT230
+            ImprimeZebraZT230Local(strTextoZebra, My.Settings.SHARED_NAME)
         End If
 
-        Try
-            Dim client As System.Net.Sockets.TcpClient = New Net.Sockets.TcpClient()
-            client.Connect(ipAddress, port)
-            'client.Connect(ipAddress,)
-
-            Dim writer As System.IO.StreamWriter = New System.IO.StreamWriter(client.GetStream())
-            writer.Write(strTextoZebra)
-            writer.Flush()
-
-            'Fechando a conexao
-            writer.Close()
-            client.Close()
-
-
-        Catch ex As Exception
-
-        End Try
     End Sub
     Public Function EnderecoImpressora() As String
         Dim sAddress As String = ""
@@ -116,4 +122,11 @@ Module Funcoes
         End If
         Return ret
     End Function
+
+    Function ProtocoloNumero() As String
+        'Retorna String com Ano + Mês + Dia + Hora Formato 24 + minutos + segundos + Milesimos de Segundos (3 digitos)
+        'Exemplo: "20160819124536827"
+        Return DateTime.Now.ToString("yyyyMMddHHmmssfff")
+    End Function
+
 End Module
