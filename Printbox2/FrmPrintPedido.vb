@@ -173,17 +173,18 @@ Public Class FrmPrintPedido
         sZebraText += "^PW831"
         sZebraText += "^LL0208"
         sZebraText += "^LS0"
-        sZebraText += "^FT39,57^A0N,25,24^FH\^FDP: " & _pedido & "^FS"
-        sZebraText += "^FT38,156^A0N,28,28^FH\^FD" & objProduto.Colecao & "^FS"
-        sZebraText += "^FT39,121^A0N,23,24^FH\^FD" & objProduto.Linha & "^FS"
-        sZebraText += "^FT39,90^A0N,28,28^FH\^FD" & objProduto.Griffe & "^FS"
-        sZebraText += "^BY3,3,72^FT331,102^BCN,,Y,N"
+        sZebraText += "^FT40,61^A0N,25,24^FH\^FDP: " & _pedido & "^FS"
+        sZebraText += "^FT40,169^A0N,28,28^FH\^FD" & objProduto.Colecao & "^FS"
+        sZebraText += "^FT40,132^A0N,23,24^FH\^FD" & objProduto.Linha & "^FS"
+        sZebraText += "^FT40,100^A0N,28,28^FH\^FD" & objProduto.Griffe & "^FS"
+        sZebraText += "^BY3,3,64^FT272,100^BCN,,Y,N"
         sZebraText += "^FD>;" & _caixa & "^FS"
-        sZebraText += "^FT664,152^A0N,34,33^FH\^FD" & "QTD." & _qtde_total.ToString & "^FS"
-        sZebraText += "^FT684,60^A0N,28,28^FH\^FD" & objFilial.CodigoRota & "-" & objFilial.SufixoFilial & "^FS"
-        sZebraText += "^FT571,157^A0N,17,16^FH\^FD" & objProduto.Categoria & "^FS"
-        sZebraText += "^FT593,93^A0N,23,24^FH\^FD" & objCaixa.NomeCliFor & "^FS"
+        sZebraText += "^FT678,124^A0N,39,38^FH\^FDQTD. " & _qtde_total & "^FS"
+        sZebraText += "^FT675,70^A0N,34,33^FH\^FD" & objFilial.CodigoRota & "^FS"
+        sZebraText += "^FT532,128^A0N,23,24^FH\^FD" & objProduto.Categoria & "^FS"
+        sZebraText += "^FT378,167^A0N,31,31^FH\^FD" & objCaixa.NomeCliFor.PadLeft(25, " ") & "^FS"
         sZebraText += "^PQ1,0,1,Y^XZ"
+
 
         Return sZebraText
     End Function

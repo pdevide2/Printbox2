@@ -35,10 +35,11 @@ Partial Class FrmPrincipal
         Me.ConfigurarIPToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripSeparator()
         Me.ConfigurarAmbienteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SairToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SairToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripSeparator()
         Me.ConfigurarSaídaDaImpressoraToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SairToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SairToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -128,6 +129,19 @@ Partial Class FrmPrincipal
         Me.ConfigurarAmbienteToolStripMenuItem.Size = New System.Drawing.Size(255, 38)
         Me.ConfigurarAmbienteToolStripMenuItem.Text = "Configurar Ambiente"
         '
+        'ToolStripMenuItem4
+        '
+        Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
+        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(252, 6)
+        '
+        'ConfigurarSaídaDaImpressoraToolStripMenuItem
+        '
+        Me.ConfigurarSaídaDaImpressoraToolStripMenuItem.Image = CType(resources.GetObject("ConfigurarSaídaDaImpressoraToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.ConfigurarSaídaDaImpressoraToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ConfigurarSaídaDaImpressoraToolStripMenuItem.Name = "ConfigurarSaídaDaImpressoraToolStripMenuItem"
+        Me.ConfigurarSaídaDaImpressoraToolStripMenuItem.Size = New System.Drawing.Size(255, 38)
+        Me.ConfigurarSaídaDaImpressoraToolStripMenuItem.Text = "Configurar Saída da Impressora"
+        '
         'SairToolStripMenuItem
         '
         Me.SairToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SairToolStripMenuItem1})
@@ -143,18 +157,15 @@ Partial Class FrmPrincipal
         Me.SairToolStripMenuItem1.Size = New System.Drawing.Size(109, 38)
         Me.SairToolStripMenuItem1.Text = "Sair"
         '
-        'ToolStripMenuItem4
+        'Button1
         '
-        Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
-        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(252, 6)
-        '
-        'ConfigurarSaídaDaImpressoraToolStripMenuItem
-        '
-        Me.ConfigurarSaídaDaImpressoraToolStripMenuItem.Image = CType(resources.GetObject("ConfigurarSaídaDaImpressoraToolStripMenuItem.Image"), System.Drawing.Image)
-        Me.ConfigurarSaídaDaImpressoraToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.ConfigurarSaídaDaImpressoraToolStripMenuItem.Name = "ConfigurarSaídaDaImpressoraToolStripMenuItem"
-        Me.ConfigurarSaídaDaImpressoraToolStripMenuItem.Size = New System.Drawing.Size(255, 38)
-        Me.ConfigurarSaídaDaImpressoraToolStripMenuItem.Text = "Configurar Saída da Impressora"
+        Me.Button1.Location = New System.Drawing.Point(1095, 428)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 2
+        Me.Button1.Text = "Teste"
+        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.Visible = False
         '
         'FrmPrincipal
         '
@@ -164,6 +175,7 @@ Partial Class FrmPrincipal
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(1350, 729)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.IsMdiContainer = True
@@ -194,4 +206,5 @@ Partial Class FrmPrincipal
     Friend WithEvents ConfigurarAmbienteToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem4 As ToolStripSeparator
     Friend WithEvents ConfigurarSaídaDaImpressoraToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Button1 As Button
 End Class
