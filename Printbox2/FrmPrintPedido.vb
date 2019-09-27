@@ -19,6 +19,14 @@ Public Class FrmPrintPedido
 
             da = New SqlDataAdapter(sql, conn)
             da.Fill(dt)
+
+            'remove todas as colunas   
+            Dim i As Integer = 0
+            Dim ii As Integer = 0
+            For ii = dg.Columns.Count - 1 To i Step -1
+                dg.Columns.Remove(dg.Columns(i).Name)
+            Next
+
             dg.DataSource = dt
 
             ContarLinhas()
@@ -180,10 +188,12 @@ Public Class FrmPrintPedido
         sZebraText += "^BY3,3,64^FT272,100^BCN,,Y,N"
         sZebraText += "^FD>;" & _caixa & "^FS"
         sZebraText += "^FT678,124^A0N,39,38^FH\^FDQTD. " & _qtde_total & "^FS"
-        sZebraText += "^FT675,70^A0N,34,33^FH\^FD" & objFilial.CodigoRota & "^FS"
+        sZebraText += "^FT596,70^AAN,45,25^FH\^FD" & objFilial.CodigoRota & "-" & objFilial.SufixoFilial & "^FS"
         sZebraText += "^FT532,128^A0N,23,24^FH\^FD" & objProduto.Categoria & "^FS"
-        sZebraText += "^FT378,167^A0N,31,31^FH\^FD" & objCaixa.NomeCliFor.PadLeft(25, " ") & "^FS"
+        sZebraText += "^FT390,170^A0N,34,33^FH\^FD" & objCaixa.NomeCliFor.PadLeft(25, " ") & "^FS"
         sZebraText += "^PQ1,0,1,Y^XZ"
+
+
 
 
         Return sZebraText
