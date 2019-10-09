@@ -30,7 +30,7 @@
     <ProductName>Printbox2.0</ProductName>
     <PublisherName>Paulo Eduardo Devide</PublisherName>
     <SuiteName>Printbox2.0</SuiteName>
-    <ApplicationRevision>10</ApplicationRevision>
+    <ApplicationRevision>11</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
