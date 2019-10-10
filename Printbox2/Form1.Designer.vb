@@ -40,6 +40,8 @@ Partial Class FrmPrincipal
         Me.SairToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SairToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.ToolStripMenuItem5 = New System.Windows.Forms.ToolStripSeparator()
+        Me.SobreToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -54,7 +56,7 @@ Partial Class FrmPrincipal
         '
         'ArquivoToolStripMenuItem
         '
-        Me.ArquivoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ImprimirEtiquetasDeCaixasDoPedidoToolStripMenuItem, Me.ImprimirEtiquetasDeCaixasWMSToolStripMenuItem, Me.ToolStripMenuItem1, Me.ImprimirEtiquetasWMSImportadoToolStripMenuItem, Me.ToolStripMenuItem2, Me.ImprimirEtiquetasDeCaixasEurekaToolStripMenuItem})
+        Me.ArquivoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ImprimirEtiquetasDeCaixasDoPedidoToolStripMenuItem, Me.ImprimirEtiquetasDeCaixasWMSToolStripMenuItem, Me.ToolStripMenuItem1, Me.ImprimirEtiquetasWMSImportadoToolStripMenuItem, Me.ToolStripMenuItem2, Me.ImprimirEtiquetasDeCaixasEurekaToolStripMenuItem, Me.ToolStripMenuItem5, Me.SobreToolStripMenuItem})
         Me.ArquivoToolStripMenuItem.Name = "ArquivoToolStripMenuItem"
         Me.ArquivoToolStripMenuItem.Size = New System.Drawing.Size(61, 20)
         Me.ArquivoToolStripMenuItem.Text = "Arquivo"
@@ -167,6 +169,19 @@ Partial Class FrmPrincipal
         Me.Button1.UseVisualStyleBackColor = True
         Me.Button1.Visible = False
         '
+        'ToolStripMenuItem5
+        '
+        Me.ToolStripMenuItem5.Name = "ToolStripMenuItem5"
+        Me.ToolStripMenuItem5.Size = New System.Drawing.Size(294, 6)
+        '
+        'SobreToolStripMenuItem
+        '
+        Me.SobreToolStripMenuItem.Image = CType(resources.GetObject("SobreToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.SobreToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.SobreToolStripMenuItem.Name = "SobreToolStripMenuItem"
+        Me.SobreToolStripMenuItem.Size = New System.Drawing.Size(297, 38)
+        Me.SobreToolStripMenuItem.Text = "Sobre"
+        '
         'FrmPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -207,4 +222,6 @@ Partial Class FrmPrincipal
     Friend WithEvents ToolStripMenuItem4 As ToolStripSeparator
     Friend WithEvents ConfigurarSaídaDaImpressoraToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents Button1 As Button
+    Friend WithEvents ToolStripMenuItem5 As ToolStripSeparator
+    Friend WithEvents SobreToolStripMenuItem As ToolStripMenuItem
 End Class

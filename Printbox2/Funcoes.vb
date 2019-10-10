@@ -129,4 +129,12 @@ Module Funcoes
         Return DateTime.Now.ToString("yyyyMMddHHmmssfff")
     End Function
 
+    Public Function GetVersion() As String
+        Dim ret As String = ""
+        If System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed Then
+            Dim ver As Version = System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion
+            ret = String.Format("{0}.{1}.{2}.{3}", ver.Major, ver.Minor, ver.Build, ver.Revision)
+        End If
+        Return ret
+    End Function
 End Module

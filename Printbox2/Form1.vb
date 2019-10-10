@@ -63,4 +63,8 @@
         form.MdiParent = Me
         form.Show()
     End Sub
+
+    Private Sub SobreToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SobreToolStripMenuItem.Click
+        MessageBox.Show("Printbox 2.0 - " & GetVersion(), "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+    End Sub
 End Class
