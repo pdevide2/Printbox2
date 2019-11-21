@@ -149,20 +149,20 @@ Public Class FrmPrintWMS
             Dim _pack As String, _produto As String, _volume As Integer, _qtde As Integer
 
             For Each row As DataRow In dt.Rows
-                _pack = row("packs").ToString
+                _pack = Trim(row("packs").ToString)
                 _produto = Trim(row("produto").ToString)
                 _qtde = CInt(row("qtde_total"))
 
                 If rbTodos.Checked Then
                     For i = 1 To _qtde
-                        Dim sZebraText = GeraTextoVolumeQRCode(_pedido, _produto, _pack, i, _qtde)
+                        Dim sZebraText = GeraTextoVolumeQRCode(Trim(_pedido), _produto, _pack, i, _qtde)
                         ImprimeZebraZT230(sZebraText)
                     Next
                 End If
 
                 If rbFaixa.Checked Then
                     For i = NumericUpDown1.Value To NumericUpDown2.Value
-                        Dim sZebraText = GeraTextoVolumeQRCode(_pedido, _produto, _pack, i, _qtde)
+                        Dim sZebraText = GeraTextoVolumeQRCode(Trim(_pedido), _produto, _pack, i, _qtde)
                         ImprimeZebraZT230(sZebraText)
                     Next
                 End If
@@ -243,7 +243,7 @@ Public Class FrmPrintWMS
             Dim _pack As String, _produto As String, _volume As Integer, _qtde As Integer
 
             For Each row As DataRow In dt.Rows
-                _pack = row("packs").ToString
+                _pack = Trim(row("packs").ToString)
                 _produto = Trim(row("produto").ToString)
                 _qtde = CInt(row("qtde_total"))
 
@@ -261,7 +261,7 @@ Public Class FrmPrintWMS
                         sZebraText = ""
                         Dim nn As Integer
                         For nn = 1 To 3
-                            sBody(nn - 1) = GeraTextoVolumeQRCodeReduzido(nn, _pedido, _produto, _pack, i, _qtde)
+                            sBody(nn - 1) = GeraTextoVolumeQRCodeReduzido(nn, Trim(_pedido), _produto, _pack, i, _qtde)
                             sZebraText += sBody(nn - 1)
                             i += 1
                             If i > _qtde Then
@@ -289,7 +289,7 @@ Public Class FrmPrintWMS
                         sZebraText = ""
                         Dim nn As Integer
                         For nn = 1 To 3
-                            sBody(nn - 1) = GeraTextoVolumeQRCodeReduzido(nn, _pedido, _produto, _pack, i, _qtde)
+                            sBody(nn - 1) = GeraTextoVolumeQRCodeReduzido(nn, Trim(_pedido), _produto, _pack, i, _qtde)
                             sZebraText += sBody(nn - 1)
                             i += 1
                             If i > NumericUpDown2.Value Then

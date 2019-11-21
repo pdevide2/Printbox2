@@ -138,10 +138,10 @@ Public Class FrmPrintPedido
             criarLista() 'Cria lista das caixas selecionadas para impressão
 
             For Each row As DataRow In dt.Rows
-                _pedido = row("pedido").ToString
-                _caixa = row("caixa").ToString
-                _produto = row("produto").ToString
-                _filial = row("filial").ToString
+                _pedido = Trim(row("pedido").ToString)
+                _caixa = Trim(row("caixa").ToString)
+                _produto = Trim(row("produto").ToString)
+                _filial = Trim(row("filial").ToString)
                 _qtde_total = CInt(row("qtde_total"))
 
                 ' Pesquisa a caixa no datagrid - se encontrou e estiver selecionada então imprime
@@ -319,20 +319,20 @@ Public Class FrmPrintPedido
             Dim _pack As String, _produto As String, _volume As Integer, _qtde As Integer
 
             For Each row As DataRow In dt.Rows
-                _pack = row("pack").ToString
+                _pack = Trim(row("pack").ToString)
                 _produto = Trim(row("produto").ToString)
                 _qtde = CInt(row("qtde_total"))
 
                 If rbTodos.Checked Then
                     For i = 1 To _qtde
-                        Dim sZebraText = GeraTextoVolumeQRCode(_pedido, _produto, _pack, i, _qtde)
+                        Dim sZebraText = GeraTextoVolumeQRCode(Trim(_pedido), _produto, _pack, i, _qtde)
                         ImprimeZebraZT230(sZebraText)
                     Next
                 End If
 
                 If rbFaixa.Checked Then
                     For i = NumericUpDown1.Value To NumericUpDown2.Value
-                        Dim sZebraText = GeraTextoVolumeQRCode(_pedido, _produto, _pack, i, _qtde)
+                        Dim sZebraText = GeraTextoVolumeQRCode(Trim(_pedido), _produto, _pack, i, _qtde)
                         ImprimeZebraZT230(sZebraText)
                     Next
                 End If
@@ -461,7 +461,7 @@ Public Class FrmPrintPedido
             Dim _pack As String, _produto As String, _volume As Integer, _qtde As Integer
 
             For Each row As DataRow In dt.Rows
-                _pack = row("pack").ToString
+                _pack = Trim(row("pack").ToString)
                 _produto = Trim(row("produto").ToString)
                 _qtde = CInt(row("qtde_total"))
 
@@ -479,7 +479,7 @@ Public Class FrmPrintPedido
                         sZebraText = ""
                         Dim nn As Integer
                         For nn = 1 To 3
-                            sBody(nn - 1) = GeraTextoVolumeQRCodeReduzido(nn, _pedido, _produto, _pack, i, _qtde)
+                            sBody(nn - 1) = GeraTextoVolumeQRCodeReduzido(nn, Trim(_pedido), _produto, _pack, i, _qtde)
                             sZebraText += sBody(nn - 1)
                             i += 1
                             If i > _qtde Then
@@ -507,7 +507,7 @@ Public Class FrmPrintPedido
                         sZebraText = ""
                         Dim nn As Integer
                         For nn = 1 To 3
-                            sBody(nn - 1) = GeraTextoVolumeQRCodeReduzido(nn, _pedido, _produto, _pack, i, _qtde)
+                            sBody(nn - 1) = GeraTextoVolumeQRCodeReduzido(nn, Trim(_pedido), _produto, _pack, i, _qtde)
                             sZebraText += sBody(nn - 1)
                             i += 1
                             If i > NumericUpDown2.Value Then
